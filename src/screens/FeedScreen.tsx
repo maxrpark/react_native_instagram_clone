@@ -1,5 +1,9 @@
-import {FlatList, StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, View} from 'react-native';
 import {StoriesFeed} from '../components';
+import {useSelector, useDispatch} from 'react-redux';
+import {RootState} from '../store/store';
+import {useEffect} from 'react';
+import {GET_SOMETHING} from '../store/actions';
 
 const stories_data = [
   {id: 1, src: '/', user: 'user_1'},
@@ -12,9 +16,16 @@ const stories_data = [
 ];
 
 const FeedScreen: React.FC = () => {
+  const {name} = useSelector((state: RootState) => state.global);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(GET_SOMETHING());
+  }, []);
+
   return (
     <View>
-      <Text>Navigation</Text>
+      <Text>{name}</Text>
       <StoriesFeed stories={stories_data} />
 
       <View>
