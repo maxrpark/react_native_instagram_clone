@@ -1,13 +1,12 @@
 import {FlatList, StyleSheet, Text, View} from 'react-native';
-
-interface Story {
-  id: number;
-  src: string;
-  user: string;
-}
+import {StoriesInt} from '../../ts/interfaces/globalInterfaces';
 
 interface ItemProps {
-  item: Story;
+  item: StoriesInt;
+}
+
+interface Props {
+  stories: StoriesInt[];
 }
 
 const SingleStoryIcon: React.FC<ItemProps> = ({item}) => {
@@ -18,10 +17,6 @@ const SingleStoryIcon: React.FC<ItemProps> = ({item}) => {
     </View>
   );
 };
-
-interface Props {
-  stories: Story[];
-}
 
 const StoriesFeed: React.FC<Props> = ({stories}) => {
   return (

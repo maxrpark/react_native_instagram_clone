@@ -4,19 +4,10 @@ import {useSelector, useDispatch} from 'react-redux';
 import {RootState} from '../store/store';
 import {useEffect} from 'react';
 import {GET_SOMETHING} from '../store/actions';
-
-const stories_data = [
-  {id: 1, src: '/', user: 'user_1'},
-  {id: 2, src: '/', user: 'user_2'},
-  {id: 3, src: '/', user: 'user_3'},
-  {id: 4, src: '/', user: 'user_4'},
-  {id: 5, src: '/', user: 'user_5'},
-  {id: 6, src: '/', user: 'user_6'},
-  {id: 7, src: '/', user: 'user_7'},
-];
+import PostsList from '../components/post/PostsList';
 
 const FeedScreen: React.FC = () => {
-  const {name} = useSelector((state: RootState) => state.global);
+  const {name, stories_data} = useSelector((state: RootState) => state.global);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -29,7 +20,7 @@ const FeedScreen: React.FC = () => {
       <StoriesFeed stories={stories_data} />
 
       <View>
-        <Text>Single post</Text>
+        <PostsList />
       </View>
     </View>
   );
