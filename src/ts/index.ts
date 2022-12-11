@@ -1,4 +1,4 @@
 import {GlobalInitialState} from './interfaces/states';
-import {StoriesInt} from './interfaces/globalInterfaces';
+import {StoriesInt, PostData} from './interfaces/globalInterfaces';
 
-export type {GlobalInitialState, StoriesInt};
+export type {GlobalInitialState, StoriesInt, PostData};

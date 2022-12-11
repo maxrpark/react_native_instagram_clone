@@ -10,15 +10,10 @@ const FeedScreen: React.FC = () => {
   const {name, stories_data} = useSelector((state: RootState) => state.global);
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(GET_SOMETHING());
-  }, []);
-
   return (
     <View>
-      <Text>{name}</Text>
       <StoriesFeed stories={stories_data} />
-
+      <Text>Menu</Text>
       <View>
         <PostsList />
       </View>
