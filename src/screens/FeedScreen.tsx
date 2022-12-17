@@ -1,19 +1,16 @@
-import {StyleSheet, Text, View} from 'react-native';
-import {StoriesFeed} from '../components';
-import {useSelector, useDispatch} from 'react-redux';
-import {RootState} from '../store/store';
-import {useEffect} from 'react';
-import {GET_SOMETHING} from '../store/actions';
-import PostsList from '../components/post/PostsList';
+import {StyleSheet, View} from 'react-native';
+// import {StoriesFeed} from '../components';
+// import {useSelector, useDispatch} from 'react-redux';
+// import {RootState} from '../store/store';
+import {FeedsHeader, PostsList} from '../components';
 
 const FeedScreen: React.FC = () => {
-  const {name, stories_data} = useSelector((state: RootState) => state.global);
-  const dispatch = useDispatch();
+  // const {name, stories_data} = useSelector((state: RootState) => state.global);
+  // const dispatch = useDispatch();
 
   return (
     <View>
-      <StoriesFeed stories={stories_data} />
-      <Text>Menu</Text>
+      <FeedsHeader />
       <View>
         <PostsList />
       </View>

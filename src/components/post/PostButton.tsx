@@ -26,15 +26,16 @@ const PostButton: React.FC<Props> = ({
           <Icon
             size={iconSize}
             name={isLiked}
-            color={liked ? 'red' : 'black'}></Icon>
+            color={liked ? 'red' : 'black'}
+          />
         </TouchableOpacity>
         <TouchableOpacity>
           <Icon size={iconSize} name="chatbubble-outline"></Icon>
         </TouchableOpacity>
-        <Icon size={iconSize} name="send-outline"></Icon>
+        <Icon size={iconSize} name="send-outline" />
       </View>
       <TouchableOpacity onPress={handleSavePress}>
-        <Icon size={iconSize} name={isSaved}></Icon>
+        <Icon size={iconSize} name={isSaved} />
       </TouchableOpacity>
     </View>
   );

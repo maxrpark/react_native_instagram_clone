@@ -1,6 +1,9 @@
 import {StyleSheet, Text, View, FlatList} from 'react-native';
 import SinglePost from './SinglePost';
 import {PostData} from '../../ts/';
+import StoriesFeed from '../stories/StoriesFeed';
+import {useSelector} from 'react-redux';
+import {RootState} from '../../store/store';
 
 const postsList: PostData[] = [
   {
@@ -33,11 +36,21 @@ const postsList: PostData[] = [
 ];
 
 const PostsList: React.FC = () => {
+  const {stories_data} = useSelector((state: RootState) => state.global);
   return (
-    // <SinglePost item={postsList[0]} />
-
     <FlatList
       data={postsList}
+      ListHeaderComponent={() => (
+        <View
+          style={{
+            borderBottomColor: '#E0E0E0',
+            borderBottomWidth: 1,
+            paddingBottom: 8,
+            marginBottom: 8,
+          }}>
+          <StoriesFeed stories={stories_data} />
+        </View>
+      )}
       renderItem={post => <SinglePost {...post} />}
       keyExtractor={item => item.user}
       showsHorizontalScrollIndicator={false}

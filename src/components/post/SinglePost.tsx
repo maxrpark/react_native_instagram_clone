@@ -2,7 +2,7 @@ import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import React, {useState} from 'react';
 import {PostData} from '../../ts';
 import PostButton from './PostButton';
-// import Ic
+
 import Icon from 'react-native-vector-icons/Ionicons';
 interface Props {
   item: PostData;
@@ -13,9 +13,6 @@ const iconSize = 25;
 const SinglePost: React.FC<Props> = ({item}) => {
   const [post, setPost] = useState(item);
   const [showDesc, setShowDesc] = useState(false);
-
-  const isLiked = post.liked ? 'heart' : 'heart-outline';
-  const isSaved = post.saved ? 'bookmark' : 'bookmark-outline';
 
   const handleDescPress = () => {
     setShowDesc(!showDesc);
@@ -37,7 +34,8 @@ const SinglePost: React.FC<Props> = ({item}) => {
         <Icon
           style={{marginTop: 2.5}}
           size={20}
-          name="ellipsis-horizontal-outline"></Icon>
+          name="ellipsis-horizontal-outline"
+        />
       </View>
       <Image source={{uri: post.url}} style={{width: '100%', height: 300}} />
       <View style={{paddingHorizontal: 10, paddingVertical: 10}}>
