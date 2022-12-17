@@ -56,7 +56,7 @@ const PostsList: React.FC = () => {
       showsHorizontalScrollIndicator={false}
       ListFooterComponent={<View />}
       showsVerticalScrollIndicator={false}
-      ListFooterComponentStyle={{height: 300}}
+      ListFooterComponentStyle={{height: 150}}
       ItemSeparatorComponent={() => {
         return (
           <View
