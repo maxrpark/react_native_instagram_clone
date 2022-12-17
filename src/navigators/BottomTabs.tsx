@@ -1,13 +1,13 @@
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/Ionicons';
-import {Posts, MyProfile, FeedScreen} from '../screens';
-import {TabNames} from './ts';
+import {Posts, MyProfile, FeedScreen, Profile} from '../screens';
+import {ScreenNames} from './ts';
 
 export type RootBottomStackParams = {
   FeedScreen: undefined;
   Posts: undefined;
-  MyProfile: undefined;
+  Profile: {user: any};
 };
 
 const Tab = createBottomTabNavigator<RootBottomStackParams>();
@@ -16,15 +16,15 @@ const BottomTabs: React.FC = () => {
   const setIcons = (routeName: string) => {
     let icon = '';
     switch (routeName) {
-      case TabNames.FEED_SCREEN_PAGE:
+      case ScreenNames.FEED_SCREEN_PAGE:
         icon = 'home';
         break;
 
-      case TabNames.POSTS_PAGE:
+      case ScreenNames.POSTS_PAGE:
         icon = 'search-outline';
         break;
 
-      case TabNames.MY_PROFILE_PAGE:
+      case ScreenNames.PROFILE_PAGE:
         icon = 'person-circle-outline';
         break;
     }
@@ -48,9 +48,9 @@ const BottomTabs: React.FC = () => {
           borderTopColor: 'white',
         },
       })}>
-      <Tab.Screen name={TabNames.FEED_SCREEN_PAGE} component={FeedScreen} />
-      <Tab.Screen name={TabNames.POSTS_PAGE} component={Posts} />
-      <Tab.Screen name={TabNames.MY_PROFILE_PAGE} component={MyProfile} />
+      <Tab.Screen name={ScreenNames.FEED_SCREEN_PAGE} component={FeedScreen} />
+      <Tab.Screen name={ScreenNames.POSTS_PAGE} component={Posts} />
+      <Tab.Screen name={ScreenNames.PROFILE_PAGE} component={Profile} />
     </Tab.Navigator>
   );
 };

@@ -1,16 +1,21 @@
-import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {Image, StyleSheet, Text, View, TouchableOpacity} from 'react-native';
+
 import React, {useState} from 'react';
 import {PostData} from '../../ts';
 import PostButton from './PostButton';
-
 import Icon from 'react-native-vector-icons/Ionicons';
+import {ScreenNames} from '../../navigators/ts';
+import {useNavigation} from '@react-navigation/core';
+
+type Nav = {
+  navigate: (value: string, props: any) => void;
+};
 interface Props {
   item: PostData;
 }
 
-const iconSize = 25;
-
 const SinglePost: React.FC<Props> = ({item}) => {
+  const navigation = useNavigation<Nav>();
   const [post, setPost] = useState(item);
   const [showDesc, setShowDesc] = useState(false);
 
@@ -27,10 +32,12 @@ const SinglePost: React.FC<Props> = ({item}) => {
   return (
     <View>
       <View style={styles.header}>
-        <View style={styles.user}>
+        <TouchableOpacity
+          style={styles.user}
+          onPress={() => navigation.navigate('UserProfile', {user: item})}>
           <Image source={{uri: post.avatar}} style={styles.avatar} />
           <Text>{post.user}</Text>
-        </View>
+        </TouchableOpacity>
         <Icon
           style={{marginTop: 2.5}}
           size={20}

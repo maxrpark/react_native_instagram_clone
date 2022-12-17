@@ -1,5 +1,7 @@
-export enum TabNames {
+export enum ScreenNames {
   FEED_SCREEN_PAGE = 'FeedScreen',
   POSTS_PAGE = 'Posts',
-  MY_PROFILE_PAGE = 'MyProfile',
+  PROFILE_PAGE = 'Profile',
+  BOTTOM_TAB = 'BottomTab',
+  SETTINGS = 'Settings',
 }

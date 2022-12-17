@@ -7,11 +7,9 @@ import {ScreenNames} from '../../navigators/ts';
 
 type Params = RootStackParams & RootBottomStackParams;
 
-interface Props extends BottomTabScreenProps<Params, ScreenNames.PROFILE_PAGE> {
-  user: any;
-}
+interface Props extends BottomTabScreenProps<Params, any> {}
 
-const MyProfile: React.FC<Props> = ({navigation}) => {
+const MyProfile: React.FC<Props> = ({navigation, route}) => {
   return (
     <View>
       <Text>MyProfile</Text>
