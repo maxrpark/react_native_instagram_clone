@@ -7,7 +7,7 @@ import {ScreenNames} from './ts';
 export type RootBottomStackParams = {
   FeedScreen: undefined;
   Posts: undefined;
-  Profile: {user: any};
+  MyProfile: {user: any};
 };
 
 const Tab = createBottomTabNavigator<RootBottomStackParams>();
@@ -24,7 +24,7 @@ const BottomTabs: React.FC = () => {
         icon = 'search-outline';
         break;
 
-      case ScreenNames.PROFILE_PAGE:
+      case ScreenNames.MY_PROFILE_PAGE:
         icon = 'person-circle-outline';
         break;
     }
@@ -39,7 +39,6 @@ const BottomTabs: React.FC = () => {
         backgroundColor: 'transparent',
       }}
       screenOptions={({route}) => ({
-        headerShown: false,
         tabBarIcon: ({size, color, focused}) => setIcons(route.name),
         tabBarLabel: () => null,
         tabBarStyle: {
@@ -50,7 +49,11 @@ const BottomTabs: React.FC = () => {
       })}>
       <Tab.Screen name={ScreenNames.FEED_SCREEN_PAGE} component={FeedScreen} />
       <Tab.Screen name={ScreenNames.POSTS_PAGE} component={Posts} />
-      <Tab.Screen name={ScreenNames.PROFILE_PAGE} component={Profile} />
+      <Tab.Screen
+        name={ScreenNames.MY_PROFILE_PAGE}
+        /* @ts-ignore TODO*/
+        component={MyProfile}
+      />
     </Tab.Navigator>
   );
 };

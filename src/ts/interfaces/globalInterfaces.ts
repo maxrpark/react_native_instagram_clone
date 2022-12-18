@@ -1,5 +1,5 @@
 export interface StoriesInt {
-  ids: string;
+  id: string;
   src: string;
   user: string;
 }
