@@ -1,4 +1,5 @@
 import React from 'react';
+import {ScrollView} from 'react-native';
 import {
   View,
   Text,
@@ -47,7 +48,7 @@ const ProfilePost: React.FC = (props: Props) => {
         <Image
           style={{width: width / 3, height: 150}}
           source={{
-            uri: `https://picsum.photos/id/${item.item}/200/300`,
+            uri: `https://picsum.photos/id/${item}/200/300`,
           }}
         />
       </View>
@@ -56,14 +57,29 @@ const ProfilePost: React.FC = (props: Props) => {
 
   return (
     <View style={styles.postWrapper}>
-      <FlatList
+      {/* <FlatList
         numColumns={3}
         data={Items}
         renderItem={item => <PostItem item={item} />}
-      />
-      {/* {Items.map(item => {
-        return <PostItem key={item} item={item} />;
-      })} */}
+      /> */}
+      {Items.map(item => {
+        return (
+          <PostItem key={item} item={item} />
+          // <View
+          //   key={item}
+          //   style={{
+          //     ...styles.box,
+          //     width: width / 3,
+          //   }}>
+          //   <Image
+          //     style={{width: width / 3, height: 150}}
+          //     source={{
+          //       uri: `https://picsum.photos/id/${item}/200/300`,
+          //     }}
+          //   />
+          // </View>
+        );
+      })}
     </View>
   );
 };

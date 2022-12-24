@@ -3,6 +3,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {Posts, MyProfile, FeedScreen, Profile} from '../screens';
 import {ScreenNames} from './ts';
+import ProfileTopNavigator from './ProfileTopNavigator';
 
 export type RootBottomStackParams = {
   FeedScreen: undefined;
@@ -52,7 +53,7 @@ const BottomTabs: React.FC = () => {
       <Tab.Screen
         name={ScreenNames.MY_PROFILE_PAGE}
         /* @ts-ignore TODO*/
-        component={MyProfile}
+        component={ProfileTopNavigator}
       />
     </Tab.Navigator>
   );
