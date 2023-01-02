@@ -1,14 +1,17 @@
 import {createStackNavigator} from '@react-navigation/stack';
-import {Profile, Settings} from '../screens';
+import {Settings, FeedScreen} from '../screens';
 import BottomTabs, {RootBottomStackParams} from './BottomTabs';
 import ProfileTopNavigator from './ProfileTopNavigator';
-import {ScreenNames} from './ts';
+import MyProfileNavigation from './MyProfileNavigation';
+import UsersProfileNavigator from './UsersProfileNavigator';
 import {NavigatorScreenParams} from '@react-navigation/native';
 
 export type RootStackParams = {
-  BottomTab: NavigatorScreenParams<RootBottomStackParams>;
+  RootNavigation: undefined;
   Settings: undefined;
   ProfileTopNavigator: {user: any};
+  UsersProfile: {user: any};
+  BottomTab: NavigatorScreenParams<RootBottomStackParams>;
 };
 const Stack = createStackNavigator<RootStackParams>();
 
@@ -19,10 +22,10 @@ const StackNav: React.FC = () => {
         headerShown: false,
         cardStyle: {backgroundColor: 'white'},
       }}>
-      <Stack.Screen name={ScreenNames.BOTTOM_TAB} component={BottomTabs} />
-      <Stack.Screen name={ScreenNames.SETTINGS} component={Settings} />
+      <Stack.Screen name={'RootNavigation'} component={FeedScreen} />
       {/* @ts-ignore TODO*/}
-      <Stack.Screen name={'UserProfile'} component={ProfileTopNavigator} />
+      <Stack.Screen name={'MyProfile'} component={ProfileTopNavigator} />
+      <Stack.Screen name={'UsersProfile'} component={UsersProfileNavigator} />
     </Stack.Navigator>
   );
 };

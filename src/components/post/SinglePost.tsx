@@ -4,17 +4,20 @@ import React, {useState} from 'react';
 import {PostData} from '../../ts';
 import PostButton from './PostButton';
 import Icon from 'react-native-vector-icons/Ionicons';
-import {ScreenNames} from '../../navigators/ts';
+
 import {useNavigation} from '@react-navigation/core';
+import {RootState} from '../../store/store';
+import {useSelector} from 'react-redux';
 
 type Nav = {
-  navigate: (value: string, props: any) => void;
+  navigate: (value: string, props?: any) => void;
 };
 interface Props {
   item: PostData;
 }
 
 const SinglePost: React.FC<Props> = ({item}) => {
+  const {user} = useSelector((state: RootState) => state.auth);
   const navigation = useNavigation<Nav>();
   const [post, setPost] = useState(item);
   const [showDesc, setShowDesc] = useState(false);
@@ -29,12 +32,18 @@ const SinglePost: React.FC<Props> = ({item}) => {
     setPost({...post, saved: !post.saved});
   };
 
+  const handleIconPress = () => {
+    if (user.name === item.user) {
+      navigation.navigate('UserProfile', {user: item});
+    } else {
+      navigation.navigate('UsersProfile');
+    }
+  };
+
   return (
     <View>
       <View style={styles.header}>
-        <TouchableOpacity
-          style={styles.user}
-          onPress={() => navigation.navigate('UserProfile', {user: item})}>
+        <TouchableOpacity style={styles.user} onPress={handleIconPress}>
           <Image source={{uri: post.avatar}} style={styles.avatar} />
           <Text>{post.user}</Text>
         </TouchableOpacity>

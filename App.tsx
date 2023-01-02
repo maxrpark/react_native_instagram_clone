@@ -1,16 +1,16 @@
 import 'react-native-gesture-handler';
 import {SafeAreaView} from 'react-native';
-import {FeedScreen} from './src/screens';
 import {Provider} from 'react-redux';
 import {store} from './src/store/store';
 import {NavigationContainer} from '@react-navigation/native';
-import {StackNav} from './src/navigators';
+import {StackNav, BottomTabs} from './src/navigators';
 const App = () => {
   return (
     <Navigator>
       <Provider store={store}>
         <SafeAreaView style={{flex: 1}}>
-          <StackNav />
+          {/* <StackNav /> */}
+          <BottomTabs />
         </SafeAreaView>
       </Provider>
     </Navigator>

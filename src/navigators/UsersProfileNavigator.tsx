@@ -16,6 +16,7 @@ const ProfileTopNavigator = () => {
 
   return (
     <View>
+      <Text>It's brittney bitch</Text>
       <MyProfileNavbar user={user} />
       <ScrollView
         showsVerticalScrollIndicator={false}
