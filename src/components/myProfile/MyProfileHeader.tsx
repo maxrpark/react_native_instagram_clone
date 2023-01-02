@@ -1,5 +1,12 @@
 import {StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
 import React from 'react';
+import {MyProfileRootStack} from '../../navigators/MyProfileNavigation';
+import {MyProfileTopRootStack} from '../../navigators/ProfileTopNavigator';
+
+type Params = MyProfileRootStack & MyProfileTopRootStack;
+
+// interface Props
+//   extends BottomTabScreenProps<Params, ScreenNames.MY_PROFILE_PAGE> {}
 
 interface Props {
   user: {

@@ -1,13 +1,19 @@
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 import {TagsProfile, PostProfile, ReelsProfile} from '../screens';
-import {Dimensions, View, ScrollView, Text} from 'react-native';
+import {Dimensions, View, ScrollView} from 'react-native';
 import MyProfileNavbar from '../components/myProfile/MyProfileNavbar';
 import MyProfileHeader from '../components/myProfile/MyProfileHeader';
 import FeaturedStories from '../components/myProfile/FeaturedStories';
 import {useSelector} from 'react-redux';
 import {RootState} from '../store/store';
 
-const Tab = createMaterialTopTabNavigator();
+export type MyProfileTopRootStack = {
+  Post: undefined;
+  Reels: undefined;
+  Tags: undefined;
+};
+
+const Tab = createMaterialTopTabNavigator<MyProfileTopRootStack>();
 
 const ProfileTopNavigator = () => {
   const windowHeight = Dimensions.get('window').height;

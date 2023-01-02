@@ -11,8 +11,8 @@ interface Props
   extends BottomTabScreenProps<Params, ScreenNames.MY_PROFILE_PAGE> {}
 
 const MyProfile: React.FC<Props> = ({navigation, route}) => {
-  const user = route.params.user;
-  console.log(user.user);
+  // const user = route.params.user;
+  // console.log(user.user);
 
   return (
     <View>

@@ -1,39 +1,8 @@
 import React from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-  Dimensions,
-  Image,
-  FlatList,
-} from 'react-native';
+import {View, StyleSheet, Dimensions, Image, FlatList} from 'react-native';
 
-type Props = {};
-
-const Items = [
-  '1',
-  '12',
-  '13',
-  '14',
-  '15',
-  '16',
-  '17',
-  '18',
-  '19',
-  '110',
-  '111',
-  '112',
-  '113',
-  '142',
-  '151',
-  '161',
-  '171',
-  '181',
-  '191',
-  '183',
-  '144',
-];
-const ProfilePost: React.FC = (props: Props) => {
+const Items = ['1', '12', '13', '14', '15', '16', '17', '18', '19', ,];
+const ProfilePost: React.FC = () => {
   const {width} = Dimensions.get('window');
 
   const PostItem = ({item}: any) => {

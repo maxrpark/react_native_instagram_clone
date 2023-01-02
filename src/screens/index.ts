@@ -4,7 +4,10 @@ import Posts from './Posts';
 import MyProfile from './profile/MyProfile';
 import PostProfile from './profile/ProfilePosts';
 import Profile from './profile/Profile';
-import Settings from './Settings/Settings';
+//
+import Settings from './myProfile/Settings';
+import EditProfile from './myProfile/Settings';
+//
 import ReelsProfile from './profile/ProfileReels';
 import TagsProfile from './profile/ProfileTags';
 
@@ -18,4 +21,5 @@ export {
   TagsProfile,
   PostProfile,
   ReelsProfile,
+  EditProfile,
 };
