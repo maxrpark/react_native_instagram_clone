@@ -6,7 +6,7 @@ type Props = {};
 const Settings: React.FC = (props: Props) => {
   return (
     <View>
-      <Text>Settings</Text>
+      <Text>Settings!!</Text>
     </View>
   );
 };
