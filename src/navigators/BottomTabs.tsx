@@ -3,14 +3,14 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {Posts} from '../screens';
 import {ScreenNames} from './ts';
-import ProfileTopNavigator from './ProfileTopNavigator';
+
 import MyProfileNavigator from './MyProfileNavigation';
 import StackNav from './StackNavigator';
 
 export type RootBottomStackParams = {
   FeedScreen: any;
   Posts: undefined;
-  MyProfile: undefined;
+  MyProfile: {user: any};
 };
 
 const Tab = createBottomTabNavigator<RootBottomStackParams>();

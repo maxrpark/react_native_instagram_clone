@@ -3,7 +3,7 @@ import ProfileTopNavigator from './ProfileTopNavigator';
 import {Settings, EditProfile} from '../screens';
 
 export type MyProfileRootStack = {
-  Profile: undefined;
+  Profile: {user: any};
   EditProfile: undefined;
   Settings: undefined;
 };

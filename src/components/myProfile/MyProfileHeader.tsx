@@ -1,13 +1,12 @@
-import {StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
 import React from 'react';
+import {StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
+
+import {useNavigation} from '@react-navigation/native';
 import {MyProfileRootStack} from '../../navigators/MyProfileNavigation';
 import {MyProfileTopRootStack} from '../../navigators/ProfileTopNavigator';
+import {StackNavigationProp} from '@react-navigation/stack';
 
-type Params = MyProfileRootStack & MyProfileTopRootStack;
-
-// interface Props
-//   extends BottomTabScreenProps<Params, ScreenNames.MY_PROFILE_PAGE> {}
-
+type NavigationList = MyProfileRootStack & MyProfileTopRootStack;
 interface Props {
   user: {
     name: string;
@@ -15,7 +14,11 @@ interface Props {
   };
 }
 
+type NavigationProps = StackNavigationProp<NavigationList>;
+
 const MyProfileHeader: React.FC<Props> = ({user}) => {
+  const navigator = useNavigation<NavigationProps>();
+
   return (
     <View style={{marginVertical: 16}}>
       <View style={styles.wrapper}>
@@ -36,7 +39,9 @@ const MyProfileHeader: React.FC<Props> = ({user}) => {
         </View>
       </View>
       <Text>Lorem ipsum dolor sit amet consectetur adipisicing</Text>
-      <TouchableOpacity style={styles.button}>
+      <TouchableOpacity
+        onPress={() => navigator.navigate('Settings')}
+        style={styles.button}>
         <Text style={{color: 'white', fontSize: 16}}>Edit Profile</Text>
       </TouchableOpacity>
     </View>
