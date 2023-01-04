@@ -6,4 +6,17 @@ import MyProfileHeader from './myProfile/MyProfileHeader';
 import MyProfileNavbar from './myProfile/MyProfileNavbar';
 import FeaturedStories from './myProfile/FeaturedStories';
 
-export {StoriesFeed, FeedsHeader, PostsList, MyProfileHeader, MyProfileNavbar};
+import FormUserDetails from './forms/FormUserDetails';
+import FormInput from './forms/FormInput';
+import Divider from './ui/Divider';
+
+export {
+  StoriesFeed,
+  FeedsHeader,
+  PostsList,
+  MyProfileHeader,
+  MyProfileNavbar,
+  FormUserDetails,
+  Divider,
+  FormInput,
+};

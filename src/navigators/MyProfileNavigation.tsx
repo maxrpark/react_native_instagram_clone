@@ -17,9 +17,12 @@ const MyProfileNavigator = () => {
         headerShown: false,
         cardStyle: {backgroundColor: 'white'},
       }}>
+      {/* <Stack.Group> */}
       <Stack.Screen name={'Profile'} component={ProfileTopNavigator} />
       <Stack.Screen name={'Settings'} component={Settings} />
       <Stack.Screen name={'EditProfile'} component={EditProfile} />
+      {/* </Stack.Group> */}
+      {/* <Stack.Group screenOptions={{presentation: 'modal'}}></Stack.Group> */}
     </Stack.Navigator>
   );
 };

@@ -44,19 +44,22 @@ const BottomTabs: React.FC = () => {
       screenOptions={({route}) => ({
         tabBarIcon: ({size, color, focused}) => setIcons(route.name),
         tabBarLabel: () => null,
+        headerShown: false,
         tabBarStyle: {
           elevation: 0,
           borderTopWidth: 0,
           borderTopColor: 'white',
         },
       })}>
-      <Tab.Screen name={ScreenNames.FEED_SCREEN_PAGE} component={StackNav} />
-      <Tab.Screen name={ScreenNames.POSTS_PAGE} component={Posts} />
-      <Tab.Screen
-        name={ScreenNames.MY_PROFILE_PAGE}
-        /* @ts-ignore TODO*/
-        component={MyProfileNavigator}
-      />
+      <Tab.Group>
+        <Tab.Screen name={ScreenNames.FEED_SCREEN_PAGE} component={StackNav} />
+        <Tab.Screen name={ScreenNames.POSTS_PAGE} component={Posts} />
+        <Tab.Screen
+          name={ScreenNames.MY_PROFILE_PAGE}
+          /* @ts-ignore TODO*/
+          component={MyProfileNavigator}
+        />
+      </Tab.Group>
     </Tab.Navigator>
   );
 };
