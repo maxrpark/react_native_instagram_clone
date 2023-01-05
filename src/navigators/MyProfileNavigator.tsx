@@ -6,16 +6,11 @@ import MyProfileHeader from '../components/myProfile/MyProfileHeader';
 import FeaturedStories from '../components/myProfile/FeaturedStories';
 import {useSelector} from 'react-redux';
 import {RootState} from '../store/store';
-
-export type MyProfileTopRootStack = {
-  Post: undefined;
-  Reels: undefined;
-  Tags: undefined;
-};
+import {MyProfileTopRootStack} from './ts';
 
 const Tab = createMaterialTopTabNavigator<MyProfileTopRootStack>();
 
-const ProfileTopNavigator = () => {
+const MyProfileNavigator = () => {
   const windowHeight = Dimensions.get('window').height;
   const {user} = useSelector((state: RootState) => state.auth);
   const {stories_data} = useSelector((state: RootState) => state.global);
@@ -40,4 +35,4 @@ const ProfileTopNavigator = () => {
   );
 };
 
-export default ProfileTopNavigator;
+export default MyProfileNavigator;

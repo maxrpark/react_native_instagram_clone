@@ -5,3 +5,20 @@ export enum ScreenNames {
   BOTTOM_TAB = 'BottomTab',
   SETTINGS = 'Settings',
 }
+
+export type RootBottomStackParams = {
+  FeedScreen: any;
+  Posts: undefined;
+  MyProfile: {user: any};
+};
+
+export type MainNavigatorRootStack = {
+  Home: undefined;
+  EditProfile: undefined;
+};
+
+export type MyProfileTopRootStack = {
+  Post: undefined;
+  Reels: undefined;
+  Tags: undefined;
+};

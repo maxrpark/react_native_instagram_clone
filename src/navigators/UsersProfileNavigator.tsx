@@ -9,7 +9,7 @@ import {RootState} from '../store/store';
 
 const Tab = createMaterialTopTabNavigator();
 
-const ProfileTopNavigator = () => {
+const MyProfileNavigator = () => {
   const windowHeight = Dimensions.get('window').height;
   const {user} = useSelector((state: RootState) => state.auth);
   const {stories_data} = useSelector((state: RootState) => state.global);
@@ -35,4 +35,4 @@ const ProfileTopNavigator = () => {
   );
 };
 
-export default ProfileTopNavigator;
+export default MyProfileNavigator;

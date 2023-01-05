@@ -1,4 +1,4 @@
 import BottomTabs from './BottomTabs';
-import StackNav from './StackNavigator';
-import ProfileTopNavigator from './ProfileTopNavigator';
-export {BottomTabs, StackNav, ProfileTopNavigator};
+import MyProfileNavigator from './MyProfileNavigator';
+import MainNavigator from './MainNavigator';
+export {BottomTabs, MyProfileNavigator, MainNavigator};

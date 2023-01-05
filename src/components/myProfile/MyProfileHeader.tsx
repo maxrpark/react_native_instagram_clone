@@ -1,12 +1,9 @@
 import React from 'react';
 import {StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
-
 import {useNavigation} from '@react-navigation/native';
-import {MyProfileRootStack} from '../../navigators/MyProfileNavigation';
-import {MyProfileTopRootStack} from '../../navigators/ProfileTopNavigator';
+import {MainNavigatorRootStack} from '../../navigators/MainNavigator';
 import {StackNavigationProp} from '@react-navigation/stack';
 
-type NavigationList = MyProfileRootStack & MyProfileTopRootStack;
 interface Props {
   user: {
     name: string;
@@ -14,7 +11,7 @@ interface Props {
   };
 }
 
-type NavigationProps = StackNavigationProp<NavigationList>;
+type NavigationProps = StackNavigationProp<MainNavigatorRootStack>;
 
 const MyProfileHeader: React.FC<Props> = ({user}) => {
   const navigator = useNavigation<NavigationProps>();
