@@ -9,6 +9,8 @@ import EditProfile from './myProfile/EditProfile';
 //
 import ReelsProfile from './profile/ProfileReels';
 import TagsProfile from './profile/ProfileTags';
+import Notifications from './Notifications';
+import Messages from './Messages';
 
 // forms
 
@@ -22,4 +24,6 @@ export {
   PostProfile,
   ReelsProfile,
   EditProfile,
+  Messages,
+  Notifications,
 };

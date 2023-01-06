@@ -15,6 +15,8 @@ export type RootBottomStackParams = {
 export type MainNavigatorRootStack = {
   Home: undefined;
   EditProfile: undefined;
+  Notifications: undefined;
+  Messages: undefined;
 };
 
 export type MyProfileTopRootStack = {

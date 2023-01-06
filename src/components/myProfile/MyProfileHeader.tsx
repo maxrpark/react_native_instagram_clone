@@ -1,7 +1,7 @@
 import React from 'react';
 import {StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
-import {MainNavigatorRootStack} from '../../navigators/MainNavigator';
+import {MainNavigatorRootStack} from '../../navigators/ts';
 import {StackNavigationProp} from '@react-navigation/stack';
 
 interface Props {
