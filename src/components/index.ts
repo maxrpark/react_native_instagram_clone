@@ -4,11 +4,14 @@ import PostsList from './post/PostsList';
 
 import MyProfileHeader from './myProfile/MyProfileHeader';
 import MyProfileNavbar from './myProfile/MyProfileNavbar';
-import FeaturedStories from './myProfile/FeaturedStories';
 
 import FormUserDetails from './forms/FormUserDetails';
 import FormInput from './forms/FormInput';
 import Divider from './ui/Divider';
+
+// notifications
+import NewLike from './notifications/NewLike';
+import NewFollow from './notifications/NewFollow';
 
 export {
   StoriesFeed,
@@ -19,4 +22,6 @@ export {
   FormUserDetails,
   Divider,
   FormInput,
+  NewLike,
+  NewFollow,
 };
