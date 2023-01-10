@@ -68,8 +68,14 @@ const Notifications = (props: Props) => {
       <SectionList
         sections={DATA}
         keyExtractor={item => item.id}
+        renderSectionHeader={({section: {date}}) => (
+          <Text style={styles.sectionTitle}>{date}</Text>
+        )}
         renderItem={({item}) => SingleNotification({Name: item.name})}
-        renderSectionHeader={({section: {date}}) => <Text>{date}</Text>}
+        ItemSeparatorComponent={() => <View style={{marginVertical: 4}}></View>}
+        renderSectionFooter={() => (
+          <View style={styles.sectionSeparator}></View>
+        )}
       />
     </View>
   );
@@ -80,5 +86,17 @@ export default Notifications;
 const styles = StyleSheet.create({
   wrapper: {
     padding: 10,
+    flex: 1,
+  },
+  sectionTitle: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    marginBottom: 14,
+    marginTop: 8,
+  },
+  sectionSeparator: {
+    marginTop: 20,
+    height: 0.3,
+    backgroundColor: 'red',
   },
 });

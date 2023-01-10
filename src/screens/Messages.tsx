@@ -1,16 +1,26 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, View, ScrollView} from 'react-native';
 import React from 'react';
+import {MessageItem} from '../components';
 
-type Props = {};
+const DATA = Array.from(Array(6).keys());
 
-const Messages = (props: Props) => {
+const Messages: React.FC = () => {
   return (
-    <View>
-      <Text>Messages</Text>
+    <View style={styles.wrapper}>
+      <ScrollView>
+        <Text>Messages</Text>
+        {DATA.map((item: any) => {
+          return <MessageItem item={item} />;
+        })}
+      </ScrollView>
     </View>
   );
 };
 
 export default Messages;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  wrapper: {
+    flex: 1,
+  },
+});

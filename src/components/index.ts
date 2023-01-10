@@ -13,6 +13,9 @@ import Divider from './ui/Divider';
 import NewLike from './notifications/NewLike';
 import NewFollow from './notifications/NewFollow';
 
+// Messages
+import MessageItem from './messages/MessageItem';
+
 export {
   StoriesFeed,
   FeedsHeader,
@@ -24,4 +27,5 @@ export {
   FormInput,
   NewLike,
   NewFollow,
+  MessageItem,
 };

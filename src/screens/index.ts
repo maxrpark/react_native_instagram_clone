@@ -11,6 +11,7 @@ import ReelsProfile from './profile/ProfileReels';
 import TagsProfile from './profile/ProfileTags';
 import Notifications from './Notifications';
 import Messages from './Messages';
+import SingleMessage from './SingleMessage';
 
 // forms
 
@@ -26,4 +27,5 @@ export {
   EditProfile,
   Messages,
   Notifications,
+  SingleMessage,
 };
