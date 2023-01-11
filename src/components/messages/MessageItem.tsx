@@ -1,22 +1,31 @@
 import React from 'react';
 import {StyleSheet, Text, View, TouchableOpacity, Image} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
+import {useNavigation} from '@react-navigation/native';
+import {NavigationProp} from '@react-navigation/native';
+import {MessageNavigatorRootStack} from '../../navigators/ts';
+
 interface Props {
   item: any; //  TODO
 }
 
+type NavigationProps = NavigationProp<MessageNavigatorRootStack, 'Messages'>;
+
 const MessageItem: React.FC<Props> = ({item}) => {
+  const navigator = useNavigation<NavigationProps>();
   return (
-    <View style={styles.wrapper}>
+    <TouchableOpacity
+      onPress={() => navigator.navigate('SingleMessage', {user: item})}
+      style={styles.wrapper}>
       <View style={styles.details}>
         <Image
           style={styles.circularImage}
           source={{
-            uri: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2787&q=80',
+            uri: item.img,
           }}
         />
         <View style={styles.messageSender}>
-          <Text style={styles.userName}>User</Text>
+          <Text style={styles.userName}>{item.name}</Text>
           <Text style={styles.time}> 4hrs.</Text>
         </View>
       </View>
@@ -25,7 +34,7 @@ const MessageItem: React.FC<Props> = ({item}) => {
           <Icon name="camera-outline" size={25} />
         </View>
       </TouchableOpacity>
-    </View>
+    </TouchableOpacity>
   );
 };
 

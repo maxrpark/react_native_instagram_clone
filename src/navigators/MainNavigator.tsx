@@ -1,6 +1,6 @@
 import {createStackNavigator} from '@react-navigation/stack';
 import BottomTabs from './BottomTabs';
-import {EditProfile, Messages, Notifications} from '../screens';
+import {EditProfile, Notifications} from '../screens';
 import {MainNavigatorRootStack} from './ts';
 import {StyleSheet} from 'react-native';
 import {MessagesNavigator} from '.';
@@ -29,7 +29,7 @@ const MainNavigator = () => {
           name="Notifications"
           component={Notifications}
         />
-        <Stack.Screen name="Messages" component={MessagesNavigator} />
+        <Stack.Screen name="MessageNavigator" component={MessagesNavigator} />
       </Stack.Group>
       <Stack.Group screenOptions={{presentation: 'modal'}}>
         <Stack.Screen name={'EditProfile'} component={EditProfile} />

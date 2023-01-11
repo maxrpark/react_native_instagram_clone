@@ -16,11 +16,15 @@ export type MainNavigatorRootStack = {
   Home: undefined;
   EditProfile: undefined;
   Notifications: undefined;
-  Messages: undefined;
+  MessageNavigator: undefined;
 };
 
 export type MyProfileTopRootStack = {
   Post: undefined;
   Reels: undefined;
   Tags: undefined;
+};
+export type MessageNavigatorRootStack = {
+  Messages: undefined;
+  SingleMessage: {user: any}; // TODO
 };

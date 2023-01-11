@@ -1,12 +1,29 @@
-import {StyleSheet, Text, View} from 'react-native';
-import React from 'react';
+import {Button, StyleSheet, Text, View} from 'react-native';
+import React, {useEffect} from 'react';
+import {StackScreenProps} from '@react-navigation/stack';
+import {MessageNavigatorRootStack} from '../navigators/ts';
 
-type Props = {};
+type NavigationProps = StackScreenProps<
+  MessageNavigatorRootStack,
+  'SingleMessage'
+>;
 
-const SingleMessage = (props: Props) => {
+const SingleMessage: React.FC<NavigationProps> = ({navigation, route}) => {
+  const user = route.params.user;
+
+  useEffect(() => {
+    navigation.setOptions({
+      title: 'hello',
+      headerBackTitle: user.name,
+      // headerRight: () => (
+      //   <Button onPress={() => console.log('hey')} title="Info" color="#fff" />
+      // ),
+    });
+  }, []);
+
   return (
     <View>
-      <Text>SingleMessage</Text>
+      <Text>{user.name}</Text>
     </View>
   );
 };

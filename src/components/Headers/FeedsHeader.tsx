@@ -19,7 +19,8 @@ const FeedsHeader: React.FC = () => {
         <TouchableOpacity onPress={() => navigator.navigate('Notifications')}>
           <Icon name="heart-outline" size={30} />
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigator.navigate('Messages')}>
+        <TouchableOpacity
+          onPress={() => navigator.navigate('MessageNavigator')}>
           <Icon name="chatbubble-outline" size={25} />
         </TouchableOpacity>
       </View>
