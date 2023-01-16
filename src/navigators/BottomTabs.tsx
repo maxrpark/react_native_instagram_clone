@@ -1,10 +1,8 @@
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/Ionicons';
-import {Posts, FeedScreen} from '../screens';
+import {Posts, FeedScreen, MyProfile} from '../screens';
 import {ScreenNames, RootBottomStackParams} from './ts';
-
-import MyProfileNavigator from './MyProfileNavigator';
 
 const Tab = createBottomTabNavigator<RootBottomStackParams>();
 
@@ -50,10 +48,7 @@ const BottomTabs: React.FC = () => {
           component={FeedScreen}
         />
         <Tab.Screen name={ScreenNames.POSTS_PAGE} component={Posts} />
-        <Tab.Screen
-          name={ScreenNames.MY_PROFILE_PAGE}
-          component={MyProfileNavigator}
-        />
+        <Tab.Screen name={ScreenNames.MY_PROFILE_PAGE} component={MyProfile} />
       </Tab.Group>
     </Tab.Navigator>
   );

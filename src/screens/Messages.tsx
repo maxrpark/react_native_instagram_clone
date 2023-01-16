@@ -1,16 +1,6 @@
-import {
-  StyleSheet,
-  Text,
-  View,
-  ScrollView,
-  Keyboard,
-  TouchableOpacity,
-  TextInput,
-} from 'react-native';
-import React, {useRef} from 'react';
-import {MessageItem} from '../components';
-import Icon from 'react-native-vector-icons/Ionicons';
-import {useState} from 'react';
+import {StyleSheet, Text, View, ScrollView} from 'react-native';
+import React from 'react';
+import {MessageItem, SearchInput} from '../components';
 
 const DATA = [
   {
@@ -51,34 +41,10 @@ const DATA = [
 ];
 
 const Messages: React.FC = () => {
-  const [showCancelButton, setShowCancelButton] = useState(false);
-  const searchInputRef = useRef<TextInput>(null!);
-
-  const cancelSearch = () => {
-    searchInputRef.current.blur();
-    setShowCancelButton(false);
-  };
-
   return (
     <View style={styles.wrapper}>
       <ScrollView>
-        <View style={styles.searchWrapper}>
-          <View style={styles.searchBar}>
-            <Icon name="search-outline" />
-            <TextInput
-              ref={searchInputRef}
-              style={styles.textInput}
-              placeholder="Search"
-              onFocus={() => setShowCancelButton(true)}
-              onSubmitEditing={Keyboard.dismiss}
-            />
-          </View>
-          {showCancelButton && (
-            <TouchableOpacity onPress={cancelSearch}>
-              <Text style={styles.textCancel}>cancel</Text>
-            </TouchableOpacity>
-          )}
-        </View>
+        <SearchInput />
         <Text style={styles.title}>Messages</Text>
         {DATA.map((item: any) => {
           return <MessageItem key={item.id} item={item} />;
@@ -98,30 +64,6 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 16,
     marginBottom: 4,
-  },
-  searchWrapper: {
-    marginTop: 10,
-    marginBottom: 14,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-  },
-  textInput: {
-    fontSize: 15,
-    marginLeft: 4,
-    flex: 1,
-  },
-  searchBar: {
-    flex: 1,
-    borderWidth: 0.2,
-    padding: 4,
-    flexDirection: 'row',
-    alignItems: 'center',
-    borderRadius: 5,
-  },
-  textCancel: {
-    marginLeft: 10,
-    fontSize: 15,
-    fontWeight: 'bold',
+    marginTop: 14,
   },
 });

@@ -7,6 +7,8 @@ import MyProfileNavbar from './myProfile/MyProfileNavbar';
 
 import FormUserDetails from './forms/FormUserDetails';
 import FormInput from './forms/FormInput';
+import SearchInput from './forms/SearchInput';
+
 import Divider from './ui/Divider';
 
 // notifications
@@ -28,4 +30,5 @@ export {
   NewLike,
   NewFollow,
   MessageItem,
+  SearchInput,
 };

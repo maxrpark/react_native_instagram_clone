@@ -62,7 +62,7 @@ const SingleNotification: React.FC<DynamicProps> = ({Name}) => {
   return <SpecificStory />;
 };
 
-const Notifications = (props: Props) => {
+const Notifications: React.FC = (props: Props) => {
   return (
     <View style={styles.wrapper}>
       <SectionList
