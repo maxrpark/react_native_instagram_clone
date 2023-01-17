@@ -5,7 +5,7 @@ import {FeedsHeader, PostsList} from '../components';
 const FeedScreen: React.FC = () => {
   return (
     <View>
-      <FeedsHeader />
+      {/* <FeedsHeader /> */}
       <View>
         <PostsList />
       </View>

@@ -1,5 +1,5 @@
 import StoriesFeed from './stories/StoriesFeed';
-import FeedsHeader from './Headers/FeedsHeader';
+import FeedsHeader from './headers/FeedsHeader';
 import PostsList from './post/PostsList';
 
 import MyProfileHeader from './myProfile/MyProfileHeader';
@@ -11,12 +11,18 @@ import SearchInput from './forms/SearchInput';
 
 import Divider from './ui/Divider';
 
+// post
+
+import PostPreview from './post/PostPreview';
+
 // notifications
 import NewLike from './notifications/NewLike';
 import NewFollow from './notifications/NewFollow';
 
 // Messages
 import MessageItem from './messages/MessageItem';
+
+import FeaturedStories from './myProfile/FeaturedStories';
 
 export {
   StoriesFeed,
@@ -31,4 +37,6 @@ export {
   NewFollow,
   MessageItem,
   SearchInput,
+  PostPreview,
+  FeaturedStories,
 };

@@ -1,22 +1,14 @@
-import React from 'react';
-import {
-  View,
-  StyleSheet,
-  ListRenderItem,
-  Image,
-  Dimensions,
-  ActivityIndicator,
-} from 'react-native';
-import {Tabs} from 'react-native-collapsible-tab-view';
-import MyProfileHeader from '../../components/myProfile/MyProfileHeader';
-import {useSelector} from 'react-redux';
+import React, {useState} from 'react';
+import {View, StyleSheet, ActivityIndicator} from 'react-native';
+
 import {RootState} from '../../store/store';
-import FeaturedStories from '../../components/myProfile/FeaturedStories';
-import {useState} from 'react';
+import {Tabs} from 'react-native-collapsible-tab-view';
 
-const HEADER_HEIGHT = 250;
+import {useSelector} from 'react-redux';
+import {PostPreview, FeaturedStories, MyProfileHeader} from '../../components/';
+import {user_post_data, user_reels_data} from '../../utils/postData';
 
-const Header = () => {
+const Header: React.FC = () => {
   const {user} = useSelector((state: RootState) => state.auth);
   const {stories_data} = useSelector((state: RootState) => state.global);
   return (
@@ -32,32 +24,6 @@ const Header = () => {
 const Example: React.FC = () => {
   const [numbers, setNumbers] = useState([0, 1, 3, 4, 5, 6, 7, 8, 9, 10, 11]);
 
-  const renderItem: ListRenderItem<number> = React.useCallback(({index}) => {
-    return (
-      <View style={[styles.box, index % 2 === 0 ? styles.boxB : styles.boxA]} />
-    );
-  }, []);
-
-  const PostItem = ({item}: any) => {
-    const {width} = Dimensions.get('window');
-
-    return (
-      <View
-        key={item}
-        style={{
-          ...styles.box,
-          width: width / 3,
-        }}>
-        <Image
-          style={{width: width / 3, height: 150}}
-          source={{
-            uri: `https://picsum.photos/id/${item.item}/200/300`,
-          }}
-        />
-      </View>
-    );
-  };
-
   const loadMore = () => {
     let newNumbers: number[] = [];
     for (let i = 0; i < 12; i++) {
@@ -70,17 +36,14 @@ const Example: React.FC = () => {
   };
 
   return (
-    <Tabs.Container
-      renderHeader={Header}
-      headerHeight={HEADER_HEIGHT} // optional
-    >
-      <Tabs.Tab name="A">
+    <Tabs.Container renderHeader={Header}>
+      <Tabs.Tab name="Posts">
         <Tabs.FlatList
-          data={numbers}
-          keyExtractor={item => item.toLocaleString()}
+          data={user_post_data}
+          keyExtractor={item => item.id + 'post'}
           numColumns={3}
-          renderItem={item => <PostItem key={item} item={item} />}
-          onEndReached={loadMore}
+          renderItem={item => <PostPreview type={'post'} {...item} />}
+          // onEndReached={loadMore}
           onEndReachedThreshold={0.5}
           ListFooterComponent={
             <View
@@ -95,53 +58,52 @@ const Example: React.FC = () => {
           }
         />
       </Tabs.Tab>
-      <Tabs.Tab name="B">
+      <Tabs.Tab name="Reels">
         <Tabs.FlatList
-          data={numbers}
-          keyExtractor={item => item.toLocaleString()}
-          renderItem={renderItem}
+          data={user_reels_data}
+          keyExtractor={item => item.id + 'reels'}
+          numColumns={3}
+          renderItem={item => <PostPreview type={'reels'} {...item} />}
+          // onEndReached={loadMore}
+          onEndReachedThreshold={0.5}
+          ListFooterComponent={
+            <View
+              style={{
+                height: 150,
+                width: '100%',
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}>
+              <ActivityIndicator size={20} color="red" />
+            </View>
+          }
         />
       </Tabs.Tab>
-      <Tabs.Tab name="c">
+      <Tabs.Tab name="Tags">
         <Tabs.FlatList
-          data={numbers}
-          keyExtractor={item => item.toLocaleString()}
-          renderItem={renderItem}
+          data={[]}
+          keyExtractor={(item, idx) => idx + 'tags'}
+          numColumns={3}
+          renderItem={item => <PostPreview type={'post'} {...item} />}
+          // onEndReached={loadMore}
+          onEndReachedThreshold={0.5}
+          ListFooterComponent={
+            <View
+              style={{
+                height: 150,
+                width: '100%',
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}>
+              <ActivityIndicator size={20} color="red" />
+            </View>
+          }
         />
       </Tabs.Tab>
     </Tabs.Container>
   );
 };
 
-const styles = StyleSheet.create({
-  boxA: {
-    backgroundColor: 'red',
-  },
-  boxB: {
-    backgroundColor: '#D8D8D8',
-  },
-  header: {
-    height: HEADER_HEIGHT,
-    width: '100%',
-    backgroundColor: '#2196f3',
-  },
-
-  postWrapper: {
-    flex: 1,
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    marginBottom: 70,
-    overflow: 'scroll',
-  },
-  box: {
-    height: 120,
-    borderWidth: 1,
-  },
-  tabs: {
-    backgroundColor: 'green',
-    height: 30,
-    width: '100%',
-  },
-});
+const styles = StyleSheet.create({});
 
 export default Example;

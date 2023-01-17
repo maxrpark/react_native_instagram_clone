@@ -36,11 +36,14 @@ const MyProfileHeader: React.FC<Props> = ({user}) => {
         </View>
       </View>
       <Text>Lorem ipsum dolor sit amet consectetur adipisicing</Text>
-      <TouchableOpacity
-        onPress={() => navigator.navigate('EditProfile')}
-        style={styles.button}>
-        <Text style={{color: 'white', fontSize: 16}}>Edit Profile</Text>
-      </TouchableOpacity>
+      {/* TODO */}
+      {user.name == 'max' && (
+        <TouchableOpacity
+          onPress={() => navigator.navigate('EditProfile')}
+          style={styles.button}>
+          <Text style={{color: 'white', fontSize: 16}}>Edit Profile</Text>
+        </TouchableOpacity>
+      )}
     </View>
   );
 };
