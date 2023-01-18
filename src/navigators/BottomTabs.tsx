@@ -1,9 +1,9 @@
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/Ionicons';
-import {Posts, FeedScreen, MyProfile} from '../screens';
+import {Posts, FeedScreen, ProfileScreen} from '../screens';
 import {ScreenNames, RootBottomStackParams} from './ts';
-import {FeedsHeader, PostsList} from '../components';
+import {FeedsHeader} from '../components';
 
 const Tab = createBottomTabNavigator<RootBottomStackParams>();
 
@@ -19,7 +19,7 @@ const BottomTabs: React.FC = () => {
         icon = 'search-outline';
         break;
 
-      case ScreenNames.MY_PROFILE_PAGE:
+      case ScreenNames.PROFILE_SCREEN:
         icon = 'person-circle-outline';
         break;
     }
@@ -50,7 +50,10 @@ const BottomTabs: React.FC = () => {
           component={FeedScreen}
         />
         <Tab.Screen name={ScreenNames.POSTS_PAGE} component={Posts} />
-        <Tab.Screen name={ScreenNames.MY_PROFILE_PAGE} component={MyProfile} />
+        <Tab.Screen
+          name={ScreenNames.PROFILE_SCREEN}
+          component={ProfileScreen}
+        />
       </Tab.Group>
     </Tab.Navigator>
   );

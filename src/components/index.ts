@@ -1,8 +1,10 @@
 import StoriesFeed from './stories/StoriesFeed';
-import FeedsHeader from './headers/FeedsHeader';
 import PostsList from './post/PostsList';
+// headers
+import FeedsHeader from './headers/FeedsHeader';
+import MyProfileHeader from './headers/MyProfileHeader';
 
-import MyProfileHeader from './myProfile/MyProfileHeader';
+import ProfileTopSection from './myProfile/MyProfileHeader';
 import MyProfileNavbar from './myProfile/MyProfileNavbar';
 
 import FormUserDetails from './forms/FormUserDetails';
@@ -28,7 +30,7 @@ export {
   StoriesFeed,
   FeedsHeader,
   PostsList,
-  MyProfileHeader,
+  ProfileTopSection,
   MyProfileNavbar,
   FormUserDetails,
   Divider,
@@ -39,4 +41,5 @@ export {
   SearchInput,
   PostPreview,
   FeaturedStories,
+  MyProfileHeader,
 };

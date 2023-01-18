@@ -1,7 +1,8 @@
 export enum ScreenNames {
   FEED_SCREEN_PAGE = 'FeedScreen',
   POSTS_PAGE = 'Posts',
-  MY_PROFILE_PAGE = 'MyProfile',
+  PROFILE_SCREEN = 'Profile',
+  STACK_PROFILE = 'Profile',
   BOTTOM_TAB = 'BottomTab',
   SETTINGS = 'Settings',
 }
@@ -9,7 +10,7 @@ export enum ScreenNames {
 export type RootBottomStackParams = {
   FeedScreen: any;
   Posts: undefined;
-  MyProfile: {user: any};
+  Profile: {user: any};
 };
 
 export type MainNavigatorRootStack = {
@@ -17,6 +18,7 @@ export type MainNavigatorRootStack = {
   EditProfile: undefined;
   Notifications: undefined;
   MessageNavigator: undefined;
+  Profile: {user: any};
 };
 
 export type MyProfileTopRootStack = {

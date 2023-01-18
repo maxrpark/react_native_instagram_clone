@@ -1,7 +1,7 @@
 import FeedScreen from './FeedScreen';
 import PostsList from '../components/post/PostsList';
 import Posts from './Posts';
-import MyProfile from './profile/MyProfile';
+import ProfileScreen from './profile/ProfileScreen';
 //
 import Settings from './myProfile/Settings';
 import EditProfile from './myProfile/EditProfile';
@@ -16,7 +16,7 @@ export {
   FeedScreen,
   PostsList,
   Posts,
-  MyProfile,
+  ProfileScreen,
   Settings,
   EditProfile,
   Messages,
