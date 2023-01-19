@@ -5,13 +5,8 @@ import {Tabs} from 'react-native-collapsible-tab-view';
 import {RootState} from '../../store/store';
 import {useSelector} from 'react-redux';
 
-import {
-  PostPreview,
-  FeaturedStories,
-  ProfileTopSection,
-} from '../../components';
+import {PostPreview, ProfileTopSection} from '../../components';
 import {user_post_data, user_reels_data} from '../../utils/postData';
-import MyProfileHeader from '../../components/headers/MyProfileHeader';
 
 import {StackScreenProps} from '@react-navigation/stack';
 import {
@@ -23,22 +18,10 @@ type navigatorRoots = RootBottomStackParams & MainNavigatorRootStack;
 
 interface Props extends StackScreenProps<navigatorRoots, 'Profile'> {}
 
-const Header: React.FC = () => {
-  const {user} = useSelector((state: RootState) => state.auth);
-  const {stories_data} = useSelector((state: RootState) => state.global);
-  return (
-    <View>
-      <MyProfileHeader />
-      <View style={{paddingHorizontal: 20}}>
-        <ProfileTopSection user={user} />
-      </View>
-      <FeaturedStories stories={stories_data} />
-    </View>
-  );
-};
-
 const MyProfile: React.FC<Props> = ({navigation, route}) => {
-  console.log(route.params);
+  const [user, setUser] = useState(route.params.user);
+
+  const {stories_data} = useSelector((state: RootState) => state.global);
 
   const [numbers, setNumbers] = useState([0, 1, 3, 4, 5, 6, 7, 8, 9, 10, 11]);
 
@@ -54,7 +37,10 @@ const MyProfile: React.FC<Props> = ({navigation, route}) => {
   };
 
   return (
-    <Tabs.Container renderHeader={Header}>
+    <Tabs.Container
+      renderHeader={() => (
+        <ProfileTopSection user={user} stories_data={stories_data} />
+      )}>
       <Tabs.Tab name="Posts">
         <Tabs.FlatList
           data={user_post_data}

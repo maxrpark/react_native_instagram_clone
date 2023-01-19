@@ -34,7 +34,16 @@ const SinglePost: React.FC<Props> = ({item}) => {
       <View style={styles.header}>
         <TouchableOpacity
           style={styles.user}
-          onPress={() => navigation.navigate('Profile', {user: item})}>
+          onPress={
+            () => navigation.navigate('Profile', {user: item})
+            // onPress={
+            //   () => navigation.navigate('StackProfile', {user: item})
+            // onPress={() =>
+            //   navigation.navigate('MainNavigator', {
+            //     screen: 'StackProfile',
+            //     params: {user: item},
+            //   })
+          }>
           <Image source={{uri: post.avatar}} style={styles.avatar} />
           <Text>{post.user}</Text>
         </TouchableOpacity>
