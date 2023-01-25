@@ -30,7 +30,6 @@ const MainNavigator = () => {
           component={Notifications}
         />
         <Stack.Screen name="MessageNavigator" component={MessagesNavigator} />
-        {/* <Stack.Screen name={'StackProfile'} component={ProfileScreen} /> */}
       </Stack.Group>
       <Stack.Group screenOptions={{presentation: 'modal'}}>
         <Stack.Screen name={'EditProfile'} component={EditProfile} />

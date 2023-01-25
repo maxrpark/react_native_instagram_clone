@@ -4,13 +4,15 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import {Posts, FeedScreen, ProfileScreen} from '../screens';
 import {ScreenNames, RootBottomStackParams} from './ts';
 import {FeedsHeader} from '../components';
-import {useSelector} from 'react-redux';
+import {useSelector, useDispatch} from 'react-redux';
 import {RootState} from '../store/store';
+import {profileActions} from '../store/features/profile/profileSlide';
 
 const Tab = createBottomTabNavigator<RootBottomStackParams>();
 
 const BottomTabs: React.FC = () => {
   const {user} = useSelector((state: RootState) => state.auth);
+  const dispatch = useDispatch();
   const setIcons = (routeName: string) => {
     let icon = '';
     switch (routeName) {
@@ -56,7 +58,9 @@ const BottomTabs: React.FC = () => {
         <Tab.Screen
           name={ScreenNames.PROFILE_SCREEN}
           component={ProfileScreen}
-          initialParams={{user}}
+          listeners={() => ({
+            tabPress: () => dispatch(profileActions.SELECT_USER(user as any)),
+          })}
         />
       </Tab.Group>
     </Tab.Navigator>

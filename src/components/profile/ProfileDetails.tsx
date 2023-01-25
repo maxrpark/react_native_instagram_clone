@@ -3,23 +3,20 @@ import {StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {MainNavigatorRootStack} from '../../navigators/ts';
 import {StackNavigationProp} from '@react-navigation/stack';
-
-interface Props {
-  user: {
-    name: string;
-    avatar: string;
-  };
-}
+import {useSelector} from 'react-redux';
+import {RootState} from '../../store/store';
 
 type NavigationProps = StackNavigationProp<MainNavigatorRootStack>;
 
-const MyProfileHeader: React.FC<Props> = ({user}) => {
+const MyProfileHeader: React.FC = ({}) => {
   const navigator = useNavigation<NavigationProps>();
+  const {profile_user} = useSelector((state: RootState) => state.profile);
+  const {user} = useSelector((state: RootState) => state.auth);
 
   return (
     <View style={{marginVertical: 16}}>
       <View style={styles.wrapper}>
-        <Image source={{uri: user.avatar}} style={styles.avatar} />
+        <Image source={{uri: profile_user.avatar}} style={styles.avatar} />
         <View style={styles.counts}>
           <View style={styles.count}>
             <Text style={styles.countNumber}>1200</Text>
@@ -37,7 +34,7 @@ const MyProfileHeader: React.FC<Props> = ({user}) => {
       </View>
       <Text>Lorem ipsum dolor sit amet consectetur adipisicing</Text>
       {/* TODO */}
-      {user.name == 'max' && (
+      {profile_user.name == user.name && (
         <TouchableOpacity
           onPress={() => navigator.navigate('EditProfile')}
           style={styles.button}>

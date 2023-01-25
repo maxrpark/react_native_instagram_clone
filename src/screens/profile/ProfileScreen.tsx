@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {View, StyleSheet, ActivityIndicator} from 'react-native';
 import {Tabs} from 'react-native-collapsible-tab-view';
 
@@ -18,10 +18,8 @@ type navigatorRoots = RootBottomStackParams & MainNavigatorRootStack;
 
 interface Props extends StackScreenProps<navigatorRoots, 'Profile'> {}
 
-const MyProfile: React.FC<Props> = ({navigation, route}) => {
+const MyProfile: React.FC<Props> = () => {
   const {profile_user} = useSelector((state: RootState) => state.profile);
-  const [user, setUser] = useState(route.params.user);
-
   const {stories_data} = useSelector((state: RootState) => state.global);
 
   const [numbers, setNumbers] = useState([0, 1, 3, 4, 5, 6, 7, 8, 9, 10, 11]);
@@ -37,11 +35,11 @@ const MyProfile: React.FC<Props> = ({navigation, route}) => {
     }, 1500);
   };
 
+  useEffect(() => {}, [profile_user]);
+
   return (
     <Tabs.Container
-      renderHeader={() => (
-        <ProfileTopSection user={user} stories_data={stories_data} />
-      )}>
+      renderHeader={() => <ProfileTopSection stories_data={stories_data} />}>
       <Tabs.Tab name="Posts">
         <Tabs.FlatList
           data={user_post_data}
