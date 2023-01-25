@@ -1,9 +1,11 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 import reducers from './reducers';
 import {GlobalInitialState} from '../../../ts/';
+import {postsList} from '../../../utils/postData';
 
 const initialState: GlobalInitialState = {
   name: 'instagram clone store!!!',
+  feed_post: postsList,
   stories_data: [
     {id: '1', src: '/', user: 'user_1'},
     {id: '2', src: '/', user: 'user_2'},

@@ -1,10 +1,11 @@
 import {configureStore} from '@reduxjs/toolkit';
-import {globalReducer, authReducer} from './features';
+import {globalReducer, authReducer, profileReducer} from './features';
 
 export const store = configureStore({
   reducer: {
     global: globalReducer,
     auth: authReducer,
+    profile: profileReducer,
   },
 });
 // devTools: true,

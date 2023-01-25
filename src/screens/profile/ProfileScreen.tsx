@@ -19,6 +19,7 @@ type navigatorRoots = RootBottomStackParams & MainNavigatorRootStack;
 interface Props extends StackScreenProps<navigatorRoots, 'Profile'> {}
 
 const MyProfile: React.FC<Props> = ({navigation, route}) => {
+  const {profile_user} = useSelector((state: RootState) => state.profile);
   const [user, setUser] = useState(route.params.user);
 
   const {stories_data} = useSelector((state: RootState) => state.global);

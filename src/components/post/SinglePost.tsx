@@ -4,6 +4,8 @@ import React, {useState} from 'react';
 import {PostData} from '../../ts';
 import PostButton from './PostButton';
 import Icon from 'react-native-vector-icons/Ionicons';
+import {profileActions} from '../../store/features/profile/profileSlide';
+import {useDispatch} from 'react-redux';
 
 import {useNavigation} from '@react-navigation/core';
 
@@ -15,6 +17,7 @@ interface Props {
 }
 
 const SinglePost: React.FC<Props> = ({item}) => {
+  const dispatch = useDispatch();
   const navigation = useNavigation<Nav>();
   const [post, setPost] = useState(item);
   const [showDesc, setShowDesc] = useState(false);
@@ -26,26 +29,22 @@ const SinglePost: React.FC<Props> = ({item}) => {
     setPost({...post, liked: !post.liked});
   };
   const handleSavePress = () => {
-    setPost({...post, saved: !post.saved});
+    // setPost({...post, saved: !post.saved});
+  };
+
+  const handleClick = () => {
+    console.log(profileActions.SELECT_USER);
+
+    dispatch(profileActions.SELECT_USER(post.user as any));
+    navigation.navigate('Profile');
   };
 
   return (
     <View>
       <View style={styles.header}>
-        <TouchableOpacity
-          style={styles.user}
-          onPress={
-            () => navigation.navigate('Profile', {user: item})
-            // onPress={
-            //   () => navigation.navigate('StackProfile', {user: item})
-            // onPress={() =>
-            //   navigation.navigate('MainNavigator', {
-            //     screen: 'StackProfile',
-            //     params: {user: item},
-            //   })
-          }>
-          <Image source={{uri: post.avatar}} style={styles.avatar} />
-          <Text>{post.user}</Text>
+        <TouchableOpacity style={styles.user} onPress={handleClick}>
+          <Image source={{uri: post.user.avatar}} style={styles.avatar} />
+          <Text>{post.user.name}</Text>
         </TouchableOpacity>
         <Icon
           style={{marginTop: 2.5}}
@@ -63,7 +62,7 @@ const SinglePost: React.FC<Props> = ({item}) => {
         />
         <Text>100.000.00 Likes</Text>
         <Text style={styles.descText} onPress={handleDescPress}>
-          {post.user}{' '}
+          {post.user.name}{' '}
           {showDesc ? post.desc : `${post.desc.substring(0, 40)}... more`}
         </Text>
         <Text>See 43 comments</Text>

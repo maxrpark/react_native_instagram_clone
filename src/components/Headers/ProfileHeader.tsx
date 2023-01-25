@@ -6,8 +6,10 @@ import {useSelector} from 'react-redux';
 import {useNavigation} from '@react-navigation/native';
 
 const MyProfileHeader: React.FC = () => {
-  const navigator = useNavigation();
-  const {user} = useSelector((state: RootState) => state.auth);
+  // const navigator = useNavigation();
+  // const {user} = useSelector((state: RootState) => state.auth);
+  const {profile_user} = useSelector((state: RootState) => state.profile);
+  // console.log(profile_user);
 
   return (
     <View style={styles.mainWrapper}>
@@ -15,7 +17,7 @@ const MyProfileHeader: React.FC = () => {
         {/* <TouchableOpacity onPress={() => navigator.goBack()}>
           <Icon name="chevron-back-outline" size={25} />
         </TouchableOpacity> */}
-        <Text style={styles.logo}>{user.name}</Text>
+        <Text style={styles.logo}>{profile_user.name}</Text>
       </View>
       <View style={styles.headerIcons}>
         <TouchableOpacity onPress={() => console.log('MessageNavigator')}>

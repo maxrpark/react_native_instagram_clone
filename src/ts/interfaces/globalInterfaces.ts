@@ -4,9 +4,13 @@ export interface StoriesInt {
   user: string;
 }
 
-export interface PostData {
-  user: string;
+export interface User {
+  name: string;
   avatar: string;
+}
+
+export interface PostData {
+  user: User;
   desc: string;
   url: string;
   saved: boolean;

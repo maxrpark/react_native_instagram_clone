@@ -1,3 +1,41 @@
+import {PostData} from '../ts';
+
+export const postsList: PostData[] = [
+  {
+    user: {
+      name: 'max',
+      avatar:
+        'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2787&q=80',
+    },
+    desc: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Molestiae nobis molestias veritatis itaque nam natus sed eos est alias optio corporis, sapiente nihil harum? Excepturi obcaecati rerum itaque, debitis placeat in, ipsa cumque ex nostrum hic rem, numquam non ut voluptate molestias dolore exercitationem. Tempora a dolorem at odit repellendus?',
+    url: 'https://images.unsplash.com/photo-1604537466158-719b1972feb8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2069&q=80',
+    saved: false,
+    liked: false,
+  },
+  {
+    user: {
+      name: 'luci',
+      avatar:
+        'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2787&q=80',
+    },
+    desc: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Molestiae nobis molestias veritatis itaque nam natus sed eos est alias optio corporis, sapiente nihil harum? Excepturi obcaecati rerum itaque, debitis placeat in, ipsa cumque ex nostrum hic rem, numquam non ut voluptate molestias dolore exercitationem. Tempora a dolorem at odit repellendus?',
+    url: 'https://images.unsplash.com/photo-1604537466158-719b1972feb8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2069&q=80',
+    saved: false,
+    liked: false,
+  },
+  {
+    user: {
+      name: 'pepe',
+      avatar:
+        'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2787&q=80',
+    },
+    desc: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Molestiae nobis molestias veritatis itaque nam natus sed eos est alias optio corporis, sapiente nihil harum? Excepturi obcaecati rerum itaque, debitis placeat in, ipsa cumque ex nostrum hic rem, numquam non ut voluptate molestias dolore exercitationem. Tempora a dolorem at odit repellendus?',
+    url: 'https://images.unsplash.com/photo-1604537466158-719b1972feb8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2069&q=80',
+    saved: false,
+    liked: false,
+  },
+];
+
 export const user_post_data = [
   {
     id: '1',
