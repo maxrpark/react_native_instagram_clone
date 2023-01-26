@@ -1,5 +1,6 @@
 import {createSlice} from '@reduxjs/toolkit';
 import reducers from './reducer';
+
 interface User {
   name: string;
   avatar: string;

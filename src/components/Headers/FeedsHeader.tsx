@@ -4,18 +4,23 @@ import {useNavigation} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {MainNavigatorRootStack} from '../../navigators/ts';
 import {ScreenNames} from '../../navigators/ts';
+import {authActions} from '../../store/features/auth/authSlide';
+import {useDispatch} from 'react-redux';
 
 type NavigationProps = StackNavigationProp<MainNavigatorRootStack>;
 
 const FeedsHeader: React.FC = () => {
+  const dispatch = useDispatch();
   const navigator = useNavigation<NavigationProps>();
   return (
     <View style={styles.mainWrapper}>
       <Text style={styles.logo}>Instagram</Text>
       <View style={styles.headerIcons}>
-        <View style={styles.addButton}>
-          <Icon name="add-outline" size={20} />
-        </View>
+        <TouchableOpacity onPress={() => console.log('hello')}>
+          <View style={styles.addButton}>
+            <Icon name="add-outline" size={20} />
+          </View>
+        </TouchableOpacity>
         <TouchableOpacity
           onPress={() => navigator.navigate(ScreenNames.NOTIFICATIONS)}>
           <Icon name="heart-outline" size={30} />
