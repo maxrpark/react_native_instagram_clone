@@ -21,7 +21,6 @@ const FormInput: React.FC<Props> = ({
   return (
     <View style={styles.formControl}>
       <Text>{name}</Text>
-      {/* <View style={{flex: 0.5}}></View> */}
       <View style={styles.formInput}>
         <TextInput
           placeholder={name}

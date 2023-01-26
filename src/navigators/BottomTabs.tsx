@@ -1,12 +1,14 @@
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import Icon from 'react-native-vector-icons/Ionicons';
-import {Posts, FeedScreen, ProfileScreen} from '../screens';
-import {ScreenNames, RootBottomStackParams} from './ts';
+import StackNavigator from './Navigator';
+import {Posts, ProfileScreen} from '../screens';
 import {FeedsHeader} from '../components';
 import {useSelector, useDispatch} from 'react-redux';
 import {RootState} from '../store/store';
 import {profileActions} from '../store/features/profile/profileSlide';
+import {ScreenNames, RootBottomStackParams} from './ts';
+
+import Icon from 'react-native-vector-icons/Ionicons';
 
 const Tab = createBottomTabNavigator<RootBottomStackParams>();
 
@@ -16,7 +18,7 @@ const BottomTabs: React.FC = () => {
   const setIcons = (routeName: string) => {
     let icon = '';
     switch (routeName) {
-      case ScreenNames.FEED_SCREEN_PAGE:
+      case ScreenNames.HOME_SCREEN:
         icon = 'home';
         break;
 
@@ -51,8 +53,8 @@ const BottomTabs: React.FC = () => {
       <Tab.Group>
         <Tab.Screen
           options={{headerShown: true, header: FeedsHeader}}
-          name={ScreenNames.FEED_SCREEN_PAGE}
-          component={FeedScreen}
+          name={ScreenNames.HOME_SCREEN}
+          component={StackNavigator}
         />
         <Tab.Screen name={ScreenNames.POSTS_PAGE} component={Posts} />
         <Tab.Screen

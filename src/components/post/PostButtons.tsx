@@ -1,6 +1,5 @@
 import {View, TouchableOpacity, StyleSheet} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import {PostData} from '../../ts/interfaces/globalInterfaces';
 
 interface Props {
   liked: boolean;
@@ -10,7 +9,7 @@ interface Props {
 }
 const iconSize = 25;
 
-const PostButton: React.FC<Props> = ({
+const PostButtons: React.FC<Props> = ({
   saved,
   liked,
   handleLikePress,
@@ -61,4 +60,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default PostButton;
+export default PostButtons;

@@ -1,6 +1,6 @@
 import {createStackNavigator} from '@react-navigation/stack';
 import BottomTabs from './BottomTabs';
-import {EditProfile, Notifications, ProfileScreen} from '../screens';
+import {EditProfile, Notifications} from '../screens';
 import {MainNavigatorRootStack, ScreenNames} from './ts';
 import {StyleSheet} from 'react-native';
 import {MessagesNavigator} from '.';
@@ -17,7 +17,7 @@ const MainNavigator = () => {
         },
       }}>
       <Stack.Group>
-        <Stack.Screen name="Home" component={BottomTabs} />
+        <Stack.Screen name={ScreenNames.BOTTOM_TAB} component={BottomTabs} />
         <Stack.Screen
           options={{
             headerShown: true,
@@ -26,13 +26,16 @@ const MainNavigator = () => {
             headerBackTitleStyle: styles.headerBackTitleStyle,
             headerTintColor: 'black',
           }}
-          name="Notifications"
+          name={ScreenNames.NOTIFICATIONS}
           component={Notifications}
         />
-        <Stack.Screen name="MessageNavigator" component={MessagesNavigator} />
+        <Stack.Screen
+          name={ScreenNames.MESSAGE_NAVIGATOR}
+          component={MessagesNavigator}
+        />
       </Stack.Group>
       <Stack.Group screenOptions={{presentation: 'modal'}}>
-        <Stack.Screen name={'EditProfile'} component={EditProfile} />
+        <Stack.Screen name={ScreenNames.EDIT_PROFILE} component={EditProfile} />
       </Stack.Group>
     </Stack.Navigator>
   );

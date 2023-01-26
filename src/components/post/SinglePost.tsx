@@ -1,13 +1,14 @@
+import React, {useState} from 'react';
 import {Image, StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 
-import React, {useState} from 'react';
-import {PostData} from '../../ts';
-import PostButton from './PostButton';
+import {PostData} from '../../ts'; // TODO MOVE
+import PostButton from './PostButtons';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {profileActions} from '../../store/features/profile/profileSlide';
 import {useDispatch} from 'react-redux';
 
 import {useNavigation} from '@react-navigation/core';
+import {ScreenNames} from '../../navigators/ts';
 
 type Nav = {
   navigate: (value: string, props?: any) => void;
@@ -36,7 +37,7 @@ const SinglePost: React.FC<Props> = ({item}) => {
     console.log(profileActions.SELECT_USER);
 
     dispatch(profileActions.SELECT_USER(post.user as any));
-    navigation.navigate('Profile');
+    navigation.navigate(ScreenNames.PROFILES_SCREEN);
   };
 
   return (

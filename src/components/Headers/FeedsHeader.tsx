@@ -1,9 +1,9 @@
-import React from 'react';
 import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
-import {MainNavigatorRootStack} from '../../navigators/ts';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {useNavigation} from '@react-navigation/native';
+import Icon from 'react-native-vector-icons/Ionicons';
+import {MainNavigatorRootStack} from '../../navigators/ts';
+import {ScreenNames} from '../../navigators/ts';
 
 type NavigationProps = StackNavigationProp<MainNavigatorRootStack>;
 
@@ -16,11 +16,12 @@ const FeedsHeader: React.FC = () => {
         <View style={styles.addButton}>
           <Icon name="add-outline" size={20} />
         </View>
-        <TouchableOpacity onPress={() => navigator.navigate('Notifications')}>
+        <TouchableOpacity
+          onPress={() => navigator.navigate(ScreenNames.NOTIFICATIONS)}>
           <Icon name="heart-outline" size={30} />
         </TouchableOpacity>
         <TouchableOpacity
-          onPress={() => navigator.navigate('MessageNavigator')}>
+          onPress={() => navigator.navigate(ScreenNames.MESSAGE_NAVIGATOR)}>
           <Icon name="chatbubble-outline" size={25} />
         </TouchableOpacity>
       </View>

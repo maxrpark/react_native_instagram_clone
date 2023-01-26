@@ -1,25 +1,39 @@
 export enum ScreenNames {
   FEED_SCREEN_PAGE = 'FeedScreen',
+  HOME_SCREEN = 'Home',
   POSTS_PAGE = 'Posts',
   PROFILE_SCREEN = 'Profile',
-  // STACK_PROFILE = 'Profile',
-  STACK_PROFILE = 'StackProfile',
-  BOTTOM_TAB = 'BottomTab',
+  MESSAGES = 'Messages',
+  SINGLE_MESSAGE = 'SingleMessage',
+
+  //
+  PROFILES_SCREEN = 'Profile',
   SETTINGS = 'Settings',
+  EDIT_PROFILE = 'EditProfile',
+
+  // Navigators names
+
+  MESSAGE_NAVIGATOR = 'MessageNavigator',
+  NOTIFICATIONS = 'Notifications',
+  BOTTOM_TAB = 'BottomTap',
 }
 
 export type RootBottomStackParams = {
-  FeedScreen: any;
+  Home: any;
+  // FeedScreen: any;
   Posts: undefined;
   Profile: {user: any};
 };
 
 export type MainNavigatorRootStack = {
-  Home: undefined;
+  BottomTap: any;
   EditProfile: undefined;
   Notifications: undefined;
   MessageNavigator: undefined;
-  StackProfile: {user: any};
+};
+export type StackNavigatorRootStack = {
+  FeedScreen: any;
+  Profile: {user: any};
 };
 
 export type MyProfileTopRootStack = {

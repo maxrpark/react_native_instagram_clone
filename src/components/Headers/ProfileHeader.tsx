@@ -3,13 +3,9 @@ import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {RootState} from '../../store/store';
 import {useSelector} from 'react-redux';
-import {useNavigation} from '@react-navigation/native';
 
 const MyProfileHeader: React.FC = () => {
-  // const navigator = useNavigation();
-  // const {user} = useSelector((state: RootState) => state.auth);
   const {profile_user} = useSelector((state: RootState) => state.profile);
-  // console.log(profile_user);
 
   return (
     <View style={styles.mainWrapper}>
@@ -38,7 +34,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-
     backgroundColor: 'white',
   },
   sectionRight: {

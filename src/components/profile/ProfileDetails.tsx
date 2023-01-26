@@ -1,7 +1,7 @@
 import React from 'react';
 import {StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
-import {MainNavigatorRootStack} from '../../navigators/ts';
+import {MainNavigatorRootStack, ScreenNames} from '../../navigators/ts';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {useSelector} from 'react-redux';
 import {RootState} from '../../store/store';
@@ -36,7 +36,7 @@ const MyProfileHeader: React.FC = ({}) => {
       {/* TODO */}
       {profile_user.name == user.name && (
         <TouchableOpacity
-          onPress={() => navigator.navigate('EditProfile')}
+          onPress={() => navigator.navigate(ScreenNames.EDIT_PROFILE)}
           style={styles.button}>
           <Text style={{color: 'white', fontSize: 16}}>Edit Profile</Text>
         </TouchableOpacity>

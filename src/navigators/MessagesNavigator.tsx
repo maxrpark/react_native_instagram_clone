@@ -3,6 +3,7 @@ import {Messages, SingleMessage} from '../screens';
 import {MessageNavigatorRootStack} from './ts';
 import {useSelector} from 'react-redux';
 import {RootState} from '../store/store';
+import {ScreenNames} from './ts';
 const Stack = createStackNavigator<MessageNavigatorRootStack>();
 
 const MessageNavigator = () => {
@@ -14,14 +15,16 @@ const MessageNavigator = () => {
           backgroundColor: 'white',
           paddingHorizontal: 10,
         },
-        // headerShown: false,
       }}>
       <Stack.Screen
-        name="Messages"
+        name={ScreenNames.MESSAGES}
         options={{title: '', headerBackTitle: user.name, headerShown: true}}
         component={Messages}
       />
-      <Stack.Screen name="SingleMessage" component={SingleMessage} />
+      <Stack.Screen
+        name={ScreenNames.SINGLE_MESSAGE}
+        component={SingleMessage}
+      />
     </Stack.Navigator>
   );
 };

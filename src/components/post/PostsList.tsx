@@ -1,6 +1,5 @@
-import {StyleSheet, Text, View, FlatList} from 'react-native';
+import {StyleSheet, View, FlatList} from 'react-native';
 import SinglePost from './SinglePost';
-import {PostData} from '../../ts/';
 import StoriesFeed from '../stories/StoriesFeed';
 import {useSelector} from 'react-redux';
 import {RootState} from '../../store/store';

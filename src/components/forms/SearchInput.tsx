@@ -1,11 +1,9 @@
 import {StyleSheet, Text, View, TouchableOpacity, Keyboard} from 'react-native';
-import React, {useRef} from 'react';
+import React, {useState, useRef} from 'react';
 import {TextInput} from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/Ionicons';
-import {useState} from 'react';
-type Props = {};
 
-const SearchInput: React.FC = (props: Props) => {
+const SearchInput: React.FC = () => {
   const [showCancelButton, setShowCancelButton] = useState(false);
   const searchInputRef = useRef<TextInput>(null!);
 
@@ -39,7 +37,6 @@ export default SearchInput;
 const styles = StyleSheet.create({
   searchWrapper: {
     marginTop: 10,
-    // marginBottom: 14,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',

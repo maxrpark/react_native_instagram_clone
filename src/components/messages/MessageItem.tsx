@@ -1,9 +1,8 @@
-import React from 'react';
-import {StyleSheet, Text, View, TouchableOpacity, Image} from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
 import {useNavigation} from '@react-navigation/native';
 import {NavigationProp} from '@react-navigation/native';
-import {MessageNavigatorRootStack} from '../../navigators/ts';
+import {MessageNavigatorRootStack, ScreenNames} from '../../navigators/ts';
+import {StyleSheet, Text, View, TouchableOpacity, Image} from 'react-native';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 interface Props {
   item: any; //  TODO
@@ -15,7 +14,9 @@ const MessageItem: React.FC<Props> = ({item}) => {
   const navigator = useNavigation<NavigationProps>();
   return (
     <TouchableOpacity
-      onPress={() => navigator.navigate('SingleMessage', {user: item})}
+      onPress={() =>
+        navigator.navigate(ScreenNames.SINGLE_MESSAGE, {user: item})
+      }
       style={styles.wrapper}>
       <View style={styles.details}>
         <Image
@@ -53,7 +54,6 @@ const styles = StyleSheet.create({
   },
   messageSender: {
     maxWidth: '60%',
-    // flexDirection: 'row',
   },
   userName: {
     fontWeight: 'bold',

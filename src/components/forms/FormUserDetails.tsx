@@ -1,6 +1,5 @@
-import {StyleSheet, Text, View, ScrollView} from 'react-native';
 import React from 'react';
-import {TextInput} from 'react-native-gesture-handler';
+import {StyleSheet, View} from 'react-native';
 import useForm from '../../hooks/useForm';
 import FormInput from './FormInput';
 
