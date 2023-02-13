@@ -12,6 +12,10 @@ import SingleMessage from './SingleMessage';
 
 // forms
 
+// AuthScreen
+
+import AuthScreen from './AuthScreen';
+
 export {
   FeedScreen,
   PostsList,
@@ -22,4 +26,5 @@ export {
   Messages,
   Notifications,
   SingleMessage,
+  AuthScreen,
 };

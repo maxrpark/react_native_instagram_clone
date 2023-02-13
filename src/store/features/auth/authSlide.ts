@@ -12,9 +12,11 @@ interface User {
 
 export interface AuthInitialState {
   user: User;
+  isAuthenticated: boolean;
 }
 
 const initialState: AuthInitialState = {
+  isAuthenticated: false,
   user: {
     name: 'max',
     userName: 'maxi.r.park',

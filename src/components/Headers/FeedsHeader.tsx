@@ -16,7 +16,7 @@ const FeedsHeader: React.FC = () => {
     <View style={styles.mainWrapper}>
       <Text style={styles.logo}>Instagram</Text>
       <View style={styles.headerIcons}>
-        <TouchableOpacity onPress={() => console.log('hello')}>
+        <TouchableOpacity onPress={() => dispatch(authActions.LAUNCH_CAMERA())}>
           <View style={styles.addButton}>
             <Icon name="add-outline" size={20} />
           </View>

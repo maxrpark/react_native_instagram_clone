@@ -10,6 +10,7 @@ export enum ScreenNames {
   PROFILES_SCREEN = 'Profile',
   SETTINGS = 'Settings',
   EDIT_PROFILE = 'EditProfile',
+  AUTH_SCREEN = 'AuthScreen',
 
   // Navigators names
 
@@ -26,6 +27,7 @@ export type RootBottomStackParams = {
 };
 
 export type MainNavigatorRootStack = {
+  AuthScreen: undefined;
   BottomTap: any;
   EditProfile: undefined;
   Notifications: undefined;
