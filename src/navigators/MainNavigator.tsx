@@ -2,19 +2,38 @@ import {createStackNavigator} from '@react-navigation/stack';
 import BottomTabs from './BottomTabs';
 import {AuthScreen, EditProfile, Notifications} from '../screens';
 import {MainNavigatorRootStack, ScreenNames} from './ts';
-import {StyleSheet} from 'react-native';
+import {StyleSheet, View, Text} from 'react-native';
 import {MessagesNavigator} from '.';
-import {useSelector} from 'react-redux';
-import {RootState} from '../store/store';
+import {useDispatch, useSelector} from 'react-redux';
+import {AppDispatch, RootState} from '../store/store';
+import {showMe} from '../store/features/auth/extraReducers';
+import {useEffect} from 'react';
 
 const Stack = createStackNavigator<MainNavigatorRootStack>();
 
 const MainNavigator = () => {
-  const {isAuthenticated} = useSelector((state: RootState) => state.auth);
+  const {isAuthenticated, checking} = useSelector(
+    (state: RootState) => state.auth,
+  );
+  const dispatch = useDispatch<AppDispatch>();
+
+  useEffect(() => {
+    dispatch(showMe());
+  }, []);
+
+  if (checking)
+    return (
+      <>
+        <View>
+          <Text>Loading</Text>
+        </View>
+      </>
+    );
   return (
     <Stack.Navigator
       screenOptions={{
         headerShown: false,
+
         cardStyle: {
           backgroundColor: 'white',
         },

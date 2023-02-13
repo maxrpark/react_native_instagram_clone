@@ -1,5 +1,6 @@
 import {createSlice} from '@reduxjs/toolkit';
 import reducers from './reducer';
+import {extraReducers} from './extraReducers';
 
 interface User {
   name: string;
@@ -13,10 +14,16 @@ interface User {
 export interface AuthInitialState {
   user: User;
   isAuthenticated: boolean;
+  checking: boolean;
+  accessToken: string;
+  refreshToken: string;
+  authErrors: string[];
 }
 
 const initialState: AuthInitialState = {
   isAuthenticated: false,
+  accessToken: '',
+  refreshToken: '',
   user: {
     name: 'max',
     userName: 'maxi.r.park',
@@ -25,12 +32,15 @@ const initialState: AuthInitialState = {
     bio: '',
     url: '',
   },
+  authErrors: [],
+  checking: true,
 };
 
 export const authSlide = createSlice({
   name: 'authSlide',
   initialState,
   reducers,
+  extraReducers,
 });
 
 export const authActions = authSlide.actions;

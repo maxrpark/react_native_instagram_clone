@@ -4,9 +4,13 @@ import React, {useState} from 'react';
 import {TextInput} from 'react-native-gesture-handler';
 import useForm from '../hooks/useForm';
 import {FormInput} from '../components';
+import {useDispatch} from 'react-redux';
+import {login} from '../store/features/auth/extraReducers';
+import {AppDispatch} from '../store/store';
+import {showMe} from '../store/features/auth/extraReducers';
 
 const authValues = {
-  user_name: '',
+  insta_id: '',
   password: '',
 };
 
@@ -14,12 +18,21 @@ const AuthScreen: React.FC = () => {
   const {formValues, handleInputChange} = useForm({...authValues});
   const [isUser, setIsUser] = useState(true);
   const [showPassword, setShowPassword] = useState(true);
+  const dispatch = useDispatch<AppDispatch>();
 
   const handleSubmit = () => {
-    console.log({
-      isUser,
-      ...formValues,
-    });
+    // dispatch(showMe());
+    if (
+      formValues.insta_id.trim().length === 0 ||
+      formValues.password.trim().length === 0
+    ) {
+      console.log('please provide all values');
+      return;
+    }
+    if (isUser) {
+      // dispatch(showMe());
+      dispatch(login(formValues));
+    }
   };
   return (
     <View>
@@ -27,12 +40,14 @@ const AuthScreen: React.FC = () => {
       <View>
         <Text>user name</Text>
         <TextInput
+          autoCapitalize="none"
           style={styles.formInput}
-          value={formValues.user_name}
-          onChangeText={value => handleInputChange(value, 'user_name')}
+          value={formValues.insta_id}
+          onChangeText={value => handleInputChange(value, 'insta_id')}
         />
         <Text>password</Text>
         <TextInput
+          autoCapitalize="none"
           style={styles.formInput}
           value={formValues.password}
           secureTextEntry={showPassword}
@@ -41,8 +56,9 @@ const AuthScreen: React.FC = () => {
         <TouchableOpacity
           style={styles.specialText}
           onPress={() => setShowPassword(!showPassword)}>
-          <Text>show passworld</Text>
+          <Text>show password</Text>
         </TouchableOpacity>
+
         <TouchableOpacity style={styles.specialText} onPress={handleSubmit}>
           <Text>{isUser ? 'Login' : 'Register'}</Text>
         </TouchableOpacity>
