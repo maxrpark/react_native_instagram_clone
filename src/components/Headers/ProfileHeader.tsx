@@ -1,12 +1,13 @@
 import React from 'react';
 import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import {RootState} from '../../store/store';
-import {useSelector} from 'react-redux';
+import {RootState, AppDispatch} from '../../store/store';
+import {useSelector, useDispatch} from 'react-redux';
+import {logout} from '../../store/features/auth/extraReducers';
 
 const MyProfileHeader: React.FC = () => {
   const {profile_user} = useSelector((state: RootState) => state.profile);
-
+  const dispatch = useDispatch<AppDispatch>();
   return (
     <View style={styles.mainWrapper}>
       <View style={styles.sectionRight}>
@@ -19,7 +20,7 @@ const MyProfileHeader: React.FC = () => {
         <TouchableOpacity onPress={() => console.log('MessageNavigator')}>
           <Icon name="add-outline" size={25} />
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => console.log('Notifications')}>
+        <TouchableOpacity onPress={() => dispatch(logout())}>
           <Icon name="menu-outline" size={30} />
         </TouchableOpacity>
       </View>

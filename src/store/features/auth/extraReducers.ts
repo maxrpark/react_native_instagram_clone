@@ -29,7 +29,7 @@ export const showMe = createAsyncThunk('auth/showMe', async () => {
     console.log(error.response.data);
   }
 });
-const login = createAsyncThunk(
+export const login = createAsyncThunk(
   'auth/login',
   async (authValues: AuthValues, thunkAPI) => {
     try {
@@ -52,6 +52,20 @@ const login = createAsyncThunk(
     }
   },
 );
+
+export const logout = createAsyncThunk('auth/logout', async () => {
+  try {
+    await authApi.post('/token/logout/');
+    await AsyncStorage.removeItem('@token');
+    return {msg: 'logout'};
+  } catch (error: any) {
+    const resData = {
+      data: error.response.data,
+      status: error.response.status,
+    };
+    return resData;
+  }
+});
 
 const extraReducers = (builder: any) => {
   builder
@@ -87,7 +101,20 @@ const extraReducers = (builder: any) => {
       (state: AuthInitialState, action: PayloadAction) => {
         console.log((action.payload as any).data);
       },
+    )
+    .addCase(
+      logout.fulfilled,
+      (state: AuthInitialState, action: PayloadAction) => {
+        state.isAuthenticated = false;
+        // remove user from state TODO or clear state
+      },
+    )
+    .addCase(
+      logout.rejected,
+      (state: AuthInitialState, action: PayloadAction) => {
+        console.log((action.payload as any).data);
+      },
     );
 };
 
-export {extraReducers, login};
+export default extraReducers;
