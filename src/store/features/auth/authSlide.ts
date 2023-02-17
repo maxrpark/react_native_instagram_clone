@@ -3,12 +3,9 @@ import reducers from './reducer';
 import extraReducers from './extraReducers';
 
 interface User {
-  name: string;
-  avatar: string;
-  userName: string;
-  // pronombres: string;
-  bio: string;
-  url: string;
+  insta_id: string;
+  profile_pic: string;
+  user_id: number;
 }
 
 export interface AuthInitialState {
@@ -24,14 +21,7 @@ const initialState: AuthInitialState = {
   isAuthenticated: false,
   accessToken: '',
   refreshToken: '',
-  user: {
-    name: 'max',
-    userName: 'maxi.r.park',
-    avatar:
-      'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2787&q=80',
-    bio: '',
-    url: '',
-  },
+  user: {} as User,
   authErrors: [],
   checking: true,
 };

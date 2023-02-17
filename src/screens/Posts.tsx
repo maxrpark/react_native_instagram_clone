@@ -63,7 +63,6 @@ const Posts: React.FC = () => {
 
   const getPost = async () => {
     const res = await postApi('/');
-    console.log(res.data);
 
     setPost(res.data);
   };

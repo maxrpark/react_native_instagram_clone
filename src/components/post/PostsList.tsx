@@ -4,13 +4,16 @@ import StoriesFeed from '../stories/StoriesFeed';
 import {useSelector} from 'react-redux';
 import {RootState} from '../../store/store';
 
-const PostsList: React.FC = () => {
-  const {stories_data, feed_post} = useSelector(
-    (state: RootState) => state.global,
-  );
+interface Props {
+  feedPost: any;
+}
+
+const PostsList: React.FC<Props> = ({feedPost}) => {
+  const {stories_data} = useSelector((state: RootState) => state.global);
+
   return (
     <FlatList
-      data={feed_post}
+      data={feedPost}
       ListHeaderComponent={() => (
         <View
           style={{
@@ -23,7 +26,7 @@ const PostsList: React.FC = () => {
         </View>
       )}
       renderItem={post => <SinglePost {...post} />}
-      keyExtractor={item => item.user.name}
+      keyExtractor={item => item.id.toLocaleString()}
       showsHorizontalScrollIndicator={false}
       ListFooterComponent={<View />}
       showsVerticalScrollIndicator={false}

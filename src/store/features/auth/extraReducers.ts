@@ -3,15 +3,29 @@ import {AuthInitialState} from './authSlide';
 import authApi from '../../../endpoints/authApi';
 import {Alert} from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import jwt_decode from 'jwt-decode';
+
+export interface JWT {
+  exp: number;
+  iat: number;
+  insta_id: string;
+  jti: string;
+  profile_pic: string;
+  token_type: string;
+  user_id: number;
+}
 
 interface AuthValues {
   insta_id: string;
   password: string;
 }
 export const showMe = createAsyncThunk('auth/showMe', async () => {
+  const isToken = await AsyncStorage.getItem('@token');
+  if (!isToken) return {};
   try {
     const res = await authApi.get('/users/me/');
 
+    let userAuth = {} as JWT;
     if (res.status === 200) {
       const token = await AsyncStorage.getItem('@token');
       const resp = await authApi.post('/jwt/refresh/', {
@@ -20,13 +34,17 @@ export const showMe = createAsyncThunk('auth/showMe', async () => {
 
       if (res.status === 200) {
         const jsonValue = JSON.stringify(resp.data);
+        userAuth = jwt_decode(resp.data.refresh);
+
         await AsyncStorage.setItem('@token', jsonValue);
+        userAuth;
       }
     }
     // console.log(res.status);
-    return res.data;
+    return userAuth;
   } catch (error: any) {
     console.log(error.response.data);
+    console.log(error.response.status);
   }
 });
 export const login = createAsyncThunk(
@@ -35,7 +53,7 @@ export const login = createAsyncThunk(
     try {
       const res = await authApi.post('/token/', authValues);
       const resData = {
-        data: res.data,
+        data: jwt_decode(res.data.refresh) as JWT,
         status: res.status,
       };
       if (res.status === 200) {
@@ -80,6 +98,12 @@ const extraReducers = (builder: any) => {
           return;
         }
         state.isAuthenticated = true;
+        const userToKen: JWT = (action.payload as any).data;
+        state.user = {
+          insta_id: userToKen.insta_id,
+          profile_pic: userToKen.profile_pic,
+          user_id: userToKen.user_id,
+        };
       },
     )
     .addCase(
@@ -94,6 +118,13 @@ const extraReducers = (builder: any) => {
       (state: AuthInitialState, action: PayloadAction) => {
         if ((action.payload as any)?.insta_id) state.isAuthenticated = true;
         state.checking = false;
+
+        const userToKen: JWT = action.payload as any; // TODO
+        state.user = {
+          insta_id: userToKen.insta_id,
+          profile_pic: userToKen.profile_pic,
+          user_id: userToKen.user_id,
+        };
       },
     )
     .addCase(
@@ -106,7 +137,6 @@ const extraReducers = (builder: any) => {
       logout.fulfilled,
       (state: AuthInitialState, action: PayloadAction) => {
         state.isAuthenticated = false;
-        // remove user from state TODO or clear state
       },
     )
     .addCase(

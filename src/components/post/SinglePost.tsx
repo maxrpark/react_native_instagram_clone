@@ -10,11 +10,13 @@ import {useDispatch} from 'react-redux';
 import {useNavigation} from '@react-navigation/core';
 import {ScreenNames} from '../../navigators/ts';
 
+const defaultImage = require('../../assets/images/user-icon.png');
+
 type Nav = {
   navigate: (value: string, props?: any) => void;
 };
 interface Props {
-  item: PostData;
+  item: any; // toDO
 }
 
 const SinglePost: React.FC<Props> = ({item}) => {
@@ -36,16 +38,23 @@ const SinglePost: React.FC<Props> = ({item}) => {
   const handleClick = () => {
     console.log(profileActions.SELECT_USER);
 
-    dispatch(profileActions.SELECT_USER(post.user as any));
-    navigation.navigate(ScreenNames.PROFILES_SCREEN);
+    dispatch(profileActions.SELECT_USER(post.author.insta_id as any));
+    // navigation.navigate(ScreenNames.PROFILES_SCREEN);
   };
 
   return (
     <View>
       <View style={styles.header}>
-        <TouchableOpacity style={styles.user} onPress={handleClick}>
-          <Image source={{uri: post.user.avatar}} style={styles.avatar} />
-          <Text>{post.user.name}</Text>
+        <TouchableOpacity style={post.author.insta_id} onPress={handleClick}>
+          <Image
+            source={
+              post.author.profile_pic
+                ? {uri: post.author.profile_pic}
+                : defaultImage
+            }
+            style={styles.avatar}
+          />
+          <Text>{post.author.insta_id}</Text>
         </TouchableOpacity>
         <Icon
           style={{marginTop: 2.5}}
@@ -53,7 +62,10 @@ const SinglePost: React.FC<Props> = ({item}) => {
           name="ellipsis-horizontal-outline"
         />
       </View>
-      <Image source={{uri: post.url}} style={{width: '100%', height: 300}} />
+      <Image
+        source={{uri: post.post_images[0].image}}
+        style={{width: '100%', height: 300}}
+      />
       <View style={{paddingHorizontal: 10, paddingVertical: 10}}>
         <PostButton
           liked={post.liked}
@@ -61,12 +73,12 @@ const SinglePost: React.FC<Props> = ({item}) => {
           handleLikePress={handleLikePress}
           handleSavePress={handleSavePress}
         />
-        <Text>100.000.00 Likes</Text>
+        {/* <Text>100.000.00 Likes</Text>
         <Text style={styles.descText} onPress={handleDescPress}>
           {post.user.name}{' '}
           {showDesc ? post.desc : `${post.desc.substring(0, 40)}... more`}
         </Text>
-        <Text>See 43 comments</Text>
+        <Text>See 43 comments</Text> */}
       </View>
     </View>
   );
